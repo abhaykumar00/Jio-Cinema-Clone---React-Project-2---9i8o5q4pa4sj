@@ -1,0 +1,39 @@
+.watch1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
+
+}
+.watch{
+    margin-top: 150px;
+}
+.watch h2{
+    position: absolute;
+    top: 60px;
+    left: 45%;
+}
+.watch2{
+    height: 500px;
+    width: 250px;
+    align-items: center;
+}
+.watch2 button{
+    align-self: center;
+    align-items: center;
+}
+.watch2:hover{
+    cursor: pointer;
+}
+.watchImg{
+    height: 450px;
+    width: 250px;
+
+}
+.center {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    margin-top: 10px; /* Adjust as needed to control the spacing between the text, image, and button */
+  }

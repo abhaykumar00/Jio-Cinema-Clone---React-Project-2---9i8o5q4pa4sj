@@ -1,0 +1,39 @@
+.card{
+    display: flex;
+ 
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    cursor: pointer;
+    justify-content: space-evenly;
+    
+}
+.webseries{
+    margin-top: 100px;
+}
+.webseries h2{
+    text-align: center;
+    text-decoration: none;
+}
+.card1{
+    height: 450px;
+    width: 250px;
+
+}
+.card1 img{
+    filter: blur(1px);
+    height: 450px;
+    width: 250px;
+    border-radius: 20px;
+}
+.card img:hover{
+    filter: blur(5px);
+}
+.card1 h3{
+    position: relative;
+    bottom: 120px;
+    color: white;
+    align-self: center;
+    align-items: center;
+    text-align: center;
+}
