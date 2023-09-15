@@ -5,6 +5,7 @@
     justify-content: center;
     height: 100vh; /* Adjust this as needed for your layout */
     text-align: center;
+    background-color: black;
   }
   
   .form {
@@ -29,12 +30,14 @@
     margin-top: 4px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    background-color: black;
+    color: white;
   }
   
   .btn {
     padding: 10px 20px;
     margin: 10px;
-    background-color: #007bff;
+    background-color: #D9008D;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -45,4 +48,6 @@
   .btn:hover {
     background-color: #0056b3;
   }
+  
+
   

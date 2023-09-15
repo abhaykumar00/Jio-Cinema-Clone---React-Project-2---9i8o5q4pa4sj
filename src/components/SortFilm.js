@@ -6,38 +6,34 @@ import { MyContext } from "../App";
 function SortFilm() {
   const [projectId, setProjectId] = useState("");
   const [data, setData] = useState([]);
-  const [page, setPage] = useState(1); // Initial page is 1
+  const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const [hasNextPage, setHasNextPage] = useState(true); // Flag to track if there's a next page
+  const [hasNextPage, setHasNextPage] = useState(true);
   const { setVideoUrl, slider, setSlider, setNewFile, newFile } =
     useContext(MyContext);
   useEffect(() => {
-    // Fetch the projectId from wherever it is stored (e.g., localStorage)
+    //Fetch the data from local storage .This is store when we login
     const storedProjectId = localStorage.getItem("projectID");
     if (storedProjectId) {
       setProjectId(storedProjectId);
-      fetchData(page, storedProjectId); // Fetch data for the initial page
+      fetchData(page, storedProjectId);
     }
   }, []);
 
   const fetchData = (currentPage, projectId) => {
-    // Make the API call with projectId in the header and dynamic page and limit values
     fetch(
       `https://academics.newtonschool.co/api/v1/ott/show?filter={"type": "short film"}`,
       {
         method: "GET",
         headers: {
-          projectID: projectId, // Use the projectId passed as a parameter
-          // Add any other headers if needed
+          projectID: projectId,
         },
       }
     )
       .then((response) => response.json())
       .then((responseJson) => {
-        // Handle the API response data
         setData(responseJson);
 
-        // Check if there's a next page of data
         setHasNextPage(responseJson.length === limit);
       })
       .catch((error) => {
@@ -48,14 +44,14 @@ function SortFilm() {
   const loadNextPage = () => {
     const nextPage = page + 1;
     setPage(nextPage);
-    fetchData(nextPage, projectId); // Pass the projectId
+    fetchData(nextPage, projectId);
   };
 
   const loadPreviousPage = () => {
     if (page > 1) {
       const previousPage = page - 1;
       setPage(previousPage);
-      fetchData(previousPage, projectId); // Pass the projectId
+      fetchData(previousPage, projectId);
     }
   };
 
@@ -63,9 +59,6 @@ function SortFilm() {
     <div className="webseries">
       <h2>Welcome to the Sort Film Page</h2>
 
-      {/* <p>Project ID: {projectId}</p> */}
-      {/* Display data fetched from the API */}
-      {/* <pre>{JSON.stringify(data.data, null, 2)}</pre> */}
       <div className="card">
         {data &&
           data.data &&

@@ -33,6 +33,7 @@ function LoginPage() {
     console.log(formData);
 
     // Perform API POST request
+    // Set projectID in the request header
     try {
       const response = await fetch(
         "https://academics.newtonschool.co/api/v1/user/login",
@@ -40,7 +41,7 @@ function LoginPage() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            projectID: projectID, // Set projectID in the request header
+            projectID: projectID,
           },
           body: JSON.stringify(formData),
         }
@@ -48,7 +49,7 @@ function LoginPage() {
 
       if (response.ok) {
         const data = await response.json();
-        // Assuming the API returns a JWT token in the response
+
         const jwtToken = data.token;
         localStorage.setItem("myName", data.data.name);
         localStorage.setItem("jwtToken", jwtToken);
@@ -56,11 +57,11 @@ function LoginPage() {
         localStorage.setItem("showID", data.data._id);
         // Redirect to Home.js
         window.location.href = "/";
-        // You can use React Router for better navigation
+
         setError("");
         console.log(jwtToken);
       } else {
-        // Handle login failure
+        //when login falis
         console.log("this is error");
         console.error("Login failed");
         setError("your password is incorrect");

@@ -42,16 +42,16 @@ function SignUp() {
 
       if (response.ok) {
         const data = await response.json();
-        // Assuming the API returns a JWT token in the response
+
+        //hear I got the token in response
         const jwtToken = data.token;
         localStorage.setItem("jwtToken", jwtToken);
         localStorage.setItem("projectID", projectID);
         // Redirect to Home.js
         window.location.href = "/";
-        // You can use React Router for better navigation
+
         console.log(jwtToken);
       } else {
-        // Handle login failure
         console.error("Login failed");
       }
     } catch (error) {

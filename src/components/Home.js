@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Link } from "react-router-dom"; // Import Link for routing
+import { Link } from "react-router-dom";
 import "../style/Home.css";
 import { MyContext } from "../App";
 function Home() {
@@ -83,7 +83,7 @@ function Home() {
                     margin: "0",
                     color: "white",
                     textAlign: "center",
-                    textDecoration: "none", // Remove text decoration
+                    textDecoration: "none",
                     marginLeft: "30px",
                   }}
                 >

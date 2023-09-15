@@ -31,18 +31,16 @@ function PasswordUpdateForm() {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
-            projectID: projectID, // Replace with your actual project ID
+            projectID: projectID,
           },
           body: JSON.stringify(formData),
         }
       );
 
       if (response.ok) {
-        // Password update successful, you can redirect or show a success message here
-        console.log("Password updated successfully");
+        console.log("hello your Password updated successfully");
         window.location.href = "/";
       } else {
-        // Handle password update errors, e.g., show error messages to the user
         console.error("Password update failed");
       }
     } catch (error) {
