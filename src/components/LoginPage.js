@@ -3,8 +3,14 @@ import SignUp from "./SignUp";
 import { MyContext } from "../App";
 import { Link } from "react-router-dom";
 function LoginPage() {
-  const { setVideoUrl, slider, setSlider, activeLink, setActiveLink } =
-    useContext(MyContext);
+  const {
+    setVideoUrl,
+    slider,
+    setSlider,
+    activeLink,
+    setActiveLink,
+    setLogin,
+  } = useContext(MyContext);
   setActiveLink("he");
   const [error, setError] = useState();
   const [signup, setSignup] = useState(false);
@@ -55,6 +61,7 @@ function LoginPage() {
         localStorage.setItem("jwtToken", jwtToken);
         localStorage.setItem("projectID", projectID);
         localStorage.setItem("showID", data.data._id);
+        setLogin(true);
         // Redirect to Home.js
         window.location.href = "/";
 

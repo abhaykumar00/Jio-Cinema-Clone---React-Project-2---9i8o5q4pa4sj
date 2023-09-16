@@ -27,16 +27,19 @@ function App() {
   const [slider, setSlider] = useState(false);
   const [newFile, setNewFile] = useState("");
   const [activeLink, setActiveLink] = useState("Home");
+  const [login, setLogin] = useState(false);
   // Define the context value as an object
   const contextValue = {
-    videoUrl: videoUrl,
-    setVideoUrl: setVideoUrl,
+    videoUrl,
+    setVideoUrl,
     slider,
     setSlider,
     setNewFile,
     newFile,
     activeLink,
     setActiveLink,
+    login,
+    setLogin,
   };
 
   return (

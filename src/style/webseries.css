@@ -5,12 +5,14 @@
     flex-wrap: wrap;
     gap: 10px;
     cursor: pointer;
-    justify-content: space-evenly;
+
     background-color: black;
+    color: white;
     
 }
 .webseries{
     margin-top: 100px;
+    color: white;
 }
 .webseries h2{
     text-align: center;

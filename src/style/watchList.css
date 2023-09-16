@@ -1,14 +1,15 @@
 .watch1{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+   
     flex-wrap: wrap;
     gap: 10px;
     background-color: black;
+    color: white;
 
 }
 .watch{
-    margin-top: 150px;
+    margin-top: 100px;
 }
 .watch h2{
     position: absolute;

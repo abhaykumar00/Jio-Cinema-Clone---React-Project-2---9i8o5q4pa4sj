@@ -6,8 +6,16 @@ import { MyContext } from "../App";
 import SortFilm from "./SortFilm";
 function Header() {
   // Initialize with the default active link
-  const { setVideoUrl, slider, setSlider, activeLink, setActiveLink } =
-    useContext(MyContext);
+  const [sortFilm, setSortFilm] = useState(true);
+  const {
+    setVideoUrl,
+    slider,
+    setSlider,
+    activeLink,
+    setActiveLink,
+    login,
+    setLogin,
+  } = useContext(MyContext);
   const [lessThanPixel, setLessThanPixel] = useState(false);
   const handleLinkClick = (linkName) => {
     setActiveLink(linkName);
@@ -80,7 +88,10 @@ function Header() {
           >
             <h4
               onClick={() => {
-                setMYLocalData([...myLocalData, ["SortFilm", "SortFilm"]]);
+                if (sortFilm) {
+                  setMYLocalData([...myLocalData, ["SortFilm", "SortFilm"]]);
+                  setSortFilm(false);
+                }
               }}
               className="newAddGroupDivh4"
               style={{
@@ -195,32 +206,50 @@ function Header() {
             <img src="https://www.jiocinema.com/images/profile/profile_avatar.svg" />
             <h3 className="sliderH5">Hi! {myName}</h3>
           </div>
-          <h1
-            onClick={() => {
-              window.location.href = "/SignUp";
-              setSlider(false);
-            }}
-          >
-            SignUp
-          </h1>
-          <h1
-            onClick={() => {
-              window.location.href = "/PasswordUpdateForm";
-              setSlider(false);
-            }}
-          >
-            Change Password
-          </h1>
-          <h1
-            onClick={() => {
-              localStorage.setItem("jwtToken", "");
-              localStorage.setItem("myName", "hey");
-              setActiveLink("sd");
-              window.location.href = "/";
-            }}
-          >
-            SignOut
-          </h1>
+          {!login && (
+            <h1
+              onClick={() => {
+                localStorage.setItem("jwtToken", "");
+                localStorage.setItem("myName", "");
+                setActiveLink("sd");
+                window.location.href = "/";
+              }}
+            >
+              Login
+            </h1>
+          )}
+          {!login && (
+            <h1
+              onClick={() => {
+                window.location.href = "/SignUp";
+                setSlider(false);
+              }}
+            >
+              SignUp
+            </h1>
+          )}
+          {login && (
+            <h1
+              onClick={() => {
+                window.location.href = "/PasswordUpdateForm";
+                setSlider(false);
+              }}
+            >
+              Change Password
+            </h1>
+          )}
+          {login && (
+            <h1
+              onClick={() => {
+                localStorage.setItem("jwtToken", "");
+                localStorage.setItem("myName", "");
+                setActiveLink("sd");
+                window.location.href = "/";
+              }}
+            >
+              SignOut
+            </h1>
+          )}
         </div>
       )}
     </div>

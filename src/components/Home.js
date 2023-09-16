@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import "../style/Home.css";
 import { MyContext } from "../App";
 function Home() {
-  const { setVideoUrl, slider, setSlider, setNewFile, newFile } =
+  const { setVideoUrl, slider, setSlider, setNewFile, newFile, setLogin } =
     useContext(MyContext);
   const [projectId, setProjectId] = useState("");
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [hasNextPage, setHasNextPage] = useState(true);
-
+  setLogin(true);
   useEffect(() => {
     const storedProjectId = localStorage.getItem("projectID");
     if (storedProjectId) {
@@ -105,7 +105,7 @@ function Home() {
           <img
             className="rightButton"
             onClick={loadNextPage}
-            src="https://th.bing.com/th/id/R.4d4b573fe79ed589b1d23413799b5893?rik=6lJ35%2fMtP3jELg&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fright-arrow-png-arrow-png-image-40020-6304.png&ehk=ed%2bXW74ewBes%2fFisUawt5Zs7T%2bUa8zX076f8062%2bfpo%3d&risl=&pid=ImgRaw&r=0"
+            src="https://www.jiocinema.com/images/White_Front_Arrow.svg"
           />
         }
       </div>
