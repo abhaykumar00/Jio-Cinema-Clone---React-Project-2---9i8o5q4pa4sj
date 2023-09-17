@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../style/Home.css";
 import { MyContext } from "../App";
+import { Hero } from "./Hero";
 function Home() {
   const { setVideoUrl, slider, setSlider, setNewFile, newFile, setLogin } =
     useContext(MyContext);

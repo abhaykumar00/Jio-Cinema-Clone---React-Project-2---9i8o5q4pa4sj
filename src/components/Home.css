@@ -1,0 +1,11 @@
+.HomeContaint {
+    width: 100%;
+    background-color: #151515;
+    padding-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+

@@ -1,0 +1,124 @@
+footer {
+  background-color: #090909;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.contactsection {
+  display: flex;
+}
+
+.downloadplaystore {
+  width: 50%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.downloadplaystore a:hover {
+  box-shadow: 1px 1px 2px 1px white;
+  transform: scale(1.05);
+  transition-duration: 0.1s;
+}
+
+.downloadplaystore a:active {
+  box-shadow: 1px 1px 2px 1px #ffc900;
+  transform: scale(1);
+}
+
+.downloadplaystore a {
+  margin: 0.5rem;
+  border-radius: 2px;
+}
+
+.socialcontect {
+  width: 50%;
+  display: flex;
+  justify-content: end;
+  padding-right: 1rem;
+  align-items: center;
+}
+
+.socialcontect img {
+  width: 40px;
+  margin: 0.6rem;
+  filter: grayscale(100%);
+  transition: all;
+  transition-duration: 0.2s;
+}
+
+.socialcontect img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+.LinksSection {
+  width: 100%;
+  display: flex;
+  height: max-content;
+  justify-content: center;
+  align-items: center;
+}
+.linkbox {
+  width: 20%;
+  height: 2in;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.linkbox li {
+  list-style: none;
+}
+.linkbox h5 {
+  color: white;
+}
+.linkbox a {
+  color: #aaaaaa;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.copyright {
+  padding: 0.2rem;
+  color: aliceblue;
+}
+.copyright p {
+  text-align: center;
+}
+
+.copyright a {
+  text-decoration: none;
+}
+
+.firstmentu:hover {
+  background-color: transparent;
+}
+
+@media (max-width: 918px) {
+  .contactsection {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .downloadplaystore,
+  .socialcontect {
+    width: 80%;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  .LinksSection {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .linkbox {
+    width: 50%;
+    margin: 0.1rem;
+  }
+}
