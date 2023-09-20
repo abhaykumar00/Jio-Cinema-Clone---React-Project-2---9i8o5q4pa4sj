@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../App.css";
@@ -8,6 +8,7 @@ function Header() {
   // Initialize with the default active link
   const [sortFilm, setSortFilm] = useState(true);
   const {
+    inputRef,
     setVideoUrl,
     slider,
     setSlider,
@@ -15,12 +16,22 @@ function Header() {
     setActiveLink,
     login,
     setLogin,
+    searchVAlue,
+    setSearchVAlue,
+    searchActive,
+    setSeaarchActive,
   } = useContext(MyContext);
   const [lessThanPixel, setLessThanPixel] = useState(false);
   const handleLinkClick = (linkName) => {
     setActiveLink(linkName);
   };
-
+  function handleClickonInput() {
+    if (!searchActive) {
+      setSeaarchActive(true);
+      setActiveLink("");
+      window.location.href = "/Search";
+    }
+  }
   const [middleSlider, setMiddleSlider] = useState(false);
   const myName = localStorage.getItem("myName");
 
@@ -190,7 +201,17 @@ function Header() {
         </div>
       )}
       <div className="header2">
-        <input type="text" placeholder="Search" />
+        <input
+          id={inputRef}
+          ref={inputRef}
+          type="text"
+          placeholder="Search"
+          onClick={handleClickonInput}
+          onChange={(e) => {
+            console.log(e.target.value);
+            setSearchVAlue(e.target.value);
+          }}
+        />
         <img
           onClick={() => {
             setSlider(!slider);

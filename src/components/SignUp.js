@@ -8,7 +8,7 @@ function SignUp() {
     appType: "ott",
   });
 
-  const [projectID, setProjectID] = useState("");
+  // const [projectID, setProjectID] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -18,9 +18,9 @@ function SignUp() {
     });
   };
 
-  const handleProjectIDChange = (e) => {
-    setProjectID(e.target.value);
-  };
+  // const handleProjectIDChange = (e) => {
+  //   setProjectID(e.target.value);
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ function SignUp() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            projectID: projectID, // Set projectID in the request header
+            projectID: "9i8o5q4pa4sj", // Set projectID in the request header
           },
           body: JSON.stringify(formData),
         }
@@ -46,7 +46,7 @@ function SignUp() {
         //hear I got the token in response
         const jwtToken = data.token;
         localStorage.setItem("jwtToken", jwtToken);
-        localStorage.setItem("projectID", projectID);
+        // localStorage.setItem("projectID", projectID);
         // Redirect to Home.js
         window.location.href = "/";
 
@@ -97,7 +97,7 @@ function SignUp() {
               required
             />
           </div>
-          <div class="form-group">
+          {/* <div class="form-group">
             <label htmlFor="projectID">Project ID:</label>
             <input
               type="text"
@@ -107,21 +107,29 @@ function SignUp() {
               onChange={handleProjectIDChange}
               required
             />
-          </div>
+          </div> */}
           <button type="submit" class="btn">
             Sign Up
           </button>
+          <p></p>
+          you already have an account{" "}
+          <nav
+            className="loginSignupHover"
+            onClick={() => (window.location.href = "/login")}
+          >
+            login
+          </nav>
         </form>
         <div>
-          <button onClick={() => (window.location.href = "/login")} class="btn">
+          {/* <button onClick={() => (window.location.href = "/login")} class="btn">
             Login
-          </button>
-          <button
+          </button> */}
+          {/* <button
             onClick={() => (window.location.href = "/PasswordUpdateForm")}
             class="btn"
           >
             Change Password
-          </button>
+          </button> */}
         </div>
       </div>
     </>

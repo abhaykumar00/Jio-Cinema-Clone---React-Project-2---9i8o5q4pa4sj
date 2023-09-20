@@ -9,8 +9,15 @@ function SortFilm() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [hasNextPage, setHasNextPage] = useState(true);
-  const { setVideoUrl, slider, setSlider, setNewFile, newFile } =
-    useContext(MyContext);
+  const {
+    setVideoUrl,
+    slider,
+    setSlider,
+    setNewFile,
+    newFile,
+    setSeaarchActive,
+  } = useContext(MyContext);
+  setSeaarchActive(false);
   useEffect(() => {
     //Fetch the data from local storage .This is store when we login
     const storedProjectId = localStorage.getItem("projectID");
@@ -56,7 +63,7 @@ function SortFilm() {
   };
 
   return (
-    <div className="webseries">
+    <div className="webseries" onClick={() => setSlider(false)}>
       <h2>Welcome to the Sort Film Page</h2>
 
       <div className="card">

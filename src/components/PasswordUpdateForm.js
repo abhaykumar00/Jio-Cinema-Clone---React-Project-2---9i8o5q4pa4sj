@@ -90,12 +90,12 @@ function PasswordUpdateForm() {
         </button>
       </form>
       <div>
-        <button onClick={() => (window.location.href = "/login")} class="btn">
+        {/* <button onClick={() => (window.location.href = "/login")} class="btn">
           Login
         </button>
         <button onClick={() => (window.location.href = "/SignUp")} class="btn">
           Sign Up
-        </button>
+        </button> */}
       </div>
     </div>
   );

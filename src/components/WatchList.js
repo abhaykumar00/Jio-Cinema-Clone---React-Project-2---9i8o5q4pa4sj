@@ -4,9 +4,17 @@ import { MyContext } from "../App";
 import "../style/watchList.css";
 import { Link } from "react-router-dom";
 function Watchlist() {
-  const { setVideoUrl, videoUrl, setNewFile, newFile } = useContext(MyContext);
+  const {
+    setVideoUrl,
+    videoUrl,
+    setNewFile,
+    newFile,
+    setSeaarchActive,
+    slider,
+    setSlider,
+  } = useContext(MyContext);
   const [watchlist, setWatchlist] = useState([]);
-
+  setSeaarchActive(false);
   async function fetchWatchlist() {
     try {
       const projectID = localStorage.getItem("projectID");
@@ -78,7 +86,7 @@ function Watchlist() {
   };
 
   return (
-    <div className="watch">
+    <div className="watch" onClick={() => setSlider(false)}>
       <h2>My Watchlist</h2>
       <div className="watch1">
         {watchlist.map((show) => (

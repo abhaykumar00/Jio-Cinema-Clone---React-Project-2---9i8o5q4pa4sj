@@ -49,14 +49,10 @@ function VideoPlayer() {
       );
 
       if (response.ok) {
-        // Request was successful, continue handling the response data
-        const responseData = await response.json(); // Assuming the response is JSON
+        const responseData = await response.json();
 
-        // You can do something with responseData here, depending on the API's response format
         console.log("Response data:", responseData);
       } else {
-        // Request failed (e.g., due to authentication issues or server errors)
-        // Handle the error as needed
         console.error("Request failed with status:", response.status);
       }
     } catch (error) {

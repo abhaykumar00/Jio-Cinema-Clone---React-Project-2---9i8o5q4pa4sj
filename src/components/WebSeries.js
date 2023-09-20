@@ -9,8 +9,15 @@ function WebSeries() {
   const [page, setPage] = useState(1); // Initial page is 1
   const [limit, setLimit] = useState(10);
   const [hasNextPage, setHasNextPage] = useState(true); // Flag to track if there's a next page
-  const { setVideoUrl, slider, setSlider, setNewFile, newFile } =
-    useContext(MyContext);
+  const {
+    setVideoUrl,
+    slider,
+    setSlider,
+    setNewFile,
+    newFile,
+    setSeaarchActive,
+  } = useContext(MyContext);
+  setSeaarchActive(false);
   useEffect(() => {
     // Fetch the projectId from wherever it is stored (e.g., localStorage)
     const storedProjectId = localStorage.getItem("projectID");
@@ -60,7 +67,7 @@ function WebSeries() {
   };
 
   return (
-    <div className="webseries">
+    <div className="webseries" onClick={() => setSlider(false)}>
       <h2>Welcome to the Web Series Page</h2>
 
       {/* <p>Project ID: {projectId}</p> */}

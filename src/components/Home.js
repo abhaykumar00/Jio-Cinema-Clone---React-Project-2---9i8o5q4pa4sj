@@ -2,10 +2,18 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../style/Home.css";
 import { MyContext } from "../App";
-import { Hero } from "./Hero";
+
 function Home() {
-  const { setVideoUrl, slider, setSlider, setNewFile, newFile, setLogin } =
-    useContext(MyContext);
+  const {
+    setVideoUrl,
+    slider,
+    setSlider,
+    setNewFile,
+    newFile,
+    setLogin,
+    setSeaarchActive,
+  } = useContext(MyContext);
+  setSeaarchActive(false);
   const [projectId, setProjectId] = useState("");
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
@@ -54,8 +62,7 @@ function Home() {
 
   return (
     <>
-      <Hero />
-      <div className="thumbnail-container">
+      <div className="thumbnail-container" onClick={() => setSlider(false)}>
         {data &&
           data.data &&
           data.data.map((item) => (
@@ -96,7 +103,7 @@ function Home() {
               </Link>
             </div>
           ))}
-        <div className="Button">
+        {/* <div className="Button">
           {page > 1 && (
             <img
               className="leftButton"
@@ -111,7 +118,20 @@ function Home() {
               src="https://www.jiocinema.com/images/White_Front_Arrow.svg"
             />
           }
-        </div>
+        </div> */}
+      </div>
+      <div style={{ position: "relative", bottom: "20px", left: "5px" }}>
+        {page > 1 && (
+          <button
+            style={{ padding: "0 10px 0 10px ", marginRight: "10px" }}
+            onClick={loadPreviousPage}
+          >
+            prev
+          </button>
+        )}
+        <button style={{ padding: "0 10px 0 10px " }} onClick={loadNextPage}>
+          next
+        </button>
       </div>
     </>
   );

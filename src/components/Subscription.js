@@ -1,10 +1,13 @@
 // SubscriptionPlans.js
 
-import React from "react";
+import React, { useContext } from "react";
 import "../style/Subscription.css";
+import { MyContext } from "../App";
 function Subscription() {
+  const { setSeaarchActive, slider, setSlider } = useContext(MyContext);
+  setSeaarchActive(false);
   return (
-    <div className="subscription-container">
+    <div className="subscription-container" onClick={() => setSlider(false)}>
       <div className="planHeader">
         <h3 className="planHeaderH3">JioCinema Premium</h3>
         <p>

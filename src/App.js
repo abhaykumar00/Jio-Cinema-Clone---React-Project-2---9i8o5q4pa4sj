@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useRef } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -14,6 +14,7 @@ import WebSeries from "./components/WebSeries";
 import Subscription from "./components/Subscription";
 import VideoPlayer from "./components/VideoPlayer";
 import SignUp from "./components/SignUp";
+import Search from "./components/Search";
 import PasswordUpdateForm from "./components/PasswordUpdateForm";
 import SortFilm from "./components/SortFilm";
 // import Home from "./Home"; // Import your Home component
@@ -28,8 +29,12 @@ function App() {
   const [newFile, setNewFile] = useState("");
   const [activeLink, setActiveLink] = useState("Home");
   const [login, setLogin] = useState(false);
+  const [searchVAlue, setSearchVAlue] = useState("");
+  const [searchActive, setSeaarchActive] = useState(false);
+  const inputRef = useRef("null");
   // Define the context value as an object
   const contextValue = {
+    inputRef,
     videoUrl,
     setVideoUrl,
     slider,
@@ -40,6 +45,10 @@ function App() {
     setActiveLink,
     login,
     setLogin,
+    searchVAlue,
+    setSearchVAlue,
+    searchActive,
+    setSeaarchActive,
   };
 
   return (
@@ -55,6 +64,7 @@ function App() {
         <Route path="/play/:id" element={<VideoPlayer />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/SortFilm" element={<SortFilm />} />
+        <Route path="/Search" element={<Search />} />
         <Route path="/PasswordUpdateForm" element={<PasswordUpdateForm />} />
       </Routes>
     </MyContext.Provider>

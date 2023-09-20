@@ -48,6 +48,12 @@
   .btn:hover {
     background-color: #0056b3;
   }
-  
+  .loginSignupHover{
+    text-decoration: solid underline;
+    color: blue;
+  }
+  .loginSignupHover:hover{
+    cursor: pointer;
+  }
 
   
