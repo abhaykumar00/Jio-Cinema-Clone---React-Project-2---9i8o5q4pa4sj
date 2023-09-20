@@ -1,5 +1,5 @@
 import "@splidejs/react-splide/css";
-import "./Hero.css";
+import "../style/Hero.css";
 import HeroSlides from "./HeroSlides";
 
 const heroposter = {

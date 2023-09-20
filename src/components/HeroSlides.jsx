@@ -1,4 +1,4 @@
-import "./Hero.css";
+import "../style/Hero.css";
 import AddIcon from "@mui/icons-material/Add";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
