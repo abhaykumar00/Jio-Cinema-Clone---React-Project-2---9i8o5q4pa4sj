@@ -53,7 +53,7 @@ function Sports(data) {
             data.data &&
             data.data.map((item) => (
               <div key={item._id} className="slide">
-                <Link to={`/ShowDetails`}>
+                <Link to={`/ShowDetails/${item._id}`}>
                   <div className="homeDiv">
                     <img
                       src={item.thumbnail}

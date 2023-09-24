@@ -57,14 +57,14 @@ function Watchlist() {
     try {
       console.log(showId, "this is showID");
       const token = localStorage.getItem("jwtToken");
-      const projectID = "Your Project ID"; // Replace with your project ID
+      const projectID = "9i8o5q4pa4sj"; // Replace with your project ID
       const response = await fetch(
         `https://academics.newtonschool.co/api/v1/ott/watchlist/like`,
         {
           method: "PATCH",
           headers: {
             Authorization: `Bearer ${token}`,
-            projectID: projectID,
+            projectID: "9i8o5q4pa4sj",
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ showId: showId }),
@@ -94,7 +94,7 @@ function Watchlist() {
           {watchlist.map((show) => (
             <div key={show._id} className="watch2">
               {show.title}
-              <Link to={`/ShowDetails`}>
+              <Link to={`/ShowDetails/${show._id}`}>
                 <img
                   onClick={() => {
                     setVideoUrl(show.video_url);

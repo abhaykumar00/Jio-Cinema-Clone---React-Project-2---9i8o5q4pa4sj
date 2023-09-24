@@ -4,7 +4,7 @@ import "../style/Home.css";
 import { MyContext } from "../App";
 import ImageSlider from "./newData/ImageSlider";
 import Sports from "./newData/Sports";
-import Slider from "./newData/Slider";
+
 import Footer from "./Footer";
 function Home() {
   const {
@@ -46,7 +46,7 @@ function Home() {
       {
         method: "GET",
         headers: {
-          projectID: projectId,
+          projectID: "9i8o5q4pa4sj",
         },
       }
     )
@@ -72,7 +72,7 @@ function Home() {
         console.error("Error fetching data:", error);
       });
   };
-
+  console.log(globalData);
   const loadNextPage = () => {
     const nextPage = page + 1;
     setPage(nextPage);

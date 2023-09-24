@@ -32,7 +32,7 @@ const ImageSlider = ({ data }) => {
     <div style={{ overflow: "hidden" }}>
       <Carousel {...settings}>
         <Wrap>
-          <Link to={`/ShowDetails`}>
+          <Link to={`/ShowDetails/${data[0][0]._id}`}>
             <a>
               {data && data[0] && (
                 <img
@@ -49,7 +49,7 @@ const ImageSlider = ({ data }) => {
         </Wrap>
 
         <Wrap>
-          <Link to={`/ShowDetails`}>
+          <Link to={`/ShowDetails/${data[0][1]._id}`}>
             <a>
               {data && data[0] && (
                 <img
@@ -65,7 +65,7 @@ const ImageSlider = ({ data }) => {
           </Link>
         </Wrap>
         <Wrap>
-          <Link to={`/ShowDetails`}>
+          <Link to={`/ShowDetails/${data[0][2]._id}`}>
             <a>
               {data && data[0] && (
                 <img
@@ -81,7 +81,7 @@ const ImageSlider = ({ data }) => {
           </Link>
         </Wrap>
         <Wrap>
-          <Link to={`/ShowDetails`}>
+          <Link to={`/ShowDetails/${data[0][3]._id}`}>
             <a>
               {data && data[0] && (
                 <img

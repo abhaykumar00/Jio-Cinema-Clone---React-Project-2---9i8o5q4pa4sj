@@ -34,7 +34,7 @@ function SortFilm() {
       {
         method: "GET",
         headers: {
-          projectID: projectId,
+          projectID: "9i8o5q4pa4sj",
         },
       }
     )
@@ -71,7 +71,7 @@ function SortFilm() {
         {data &&
           data.data &&
           data.data.map((item) => (
-            <Link to={`/ShowDetails`}>
+            <Link to={`/ShowDetails/${item._id}`}>
               <div
                 onClick={() => {
                   setVideoUrl(item.video_url);

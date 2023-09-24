@@ -44,7 +44,7 @@ function VideoPlayer() {
           method: "PATCH",
           headers: {
             Authorization: `Bearer ${token}`,
-            projectID: projectID,
+            projectID: "9i8o5q4pa4sj",
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ showId: showId }),

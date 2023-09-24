@@ -24,7 +24,7 @@ function WebSeries() {
     const storedProjectId = localStorage.getItem("projectID");
     if (storedProjectId) {
       setProjectId(storedProjectId);
-      fetchData(page, storedProjectId); // Fetch data for the initial page
+      fetchData(page, "9i8o5q4pa4sj"); // Fetch data for the initial page
     }
   }, []);
 
@@ -35,7 +35,7 @@ function WebSeries() {
       {
         method: "GET",
         headers: {
-          projectID: projectId, // Use the projectId passed as a parameter
+          projectID: "9i8o5q4pa4sj", // Use the projectId passed as a parameter
           // Add any other headers if needed
         },
       }
@@ -56,14 +56,14 @@ function WebSeries() {
   const loadNextPage = () => {
     const nextPage = page + 1;
     setPage(nextPage);
-    fetchData(nextPage, projectId); // Pass the projectId
+    fetchData(nextPage, "9i8o5q4pa4sj"); // Pass the projectId
   };
 
   const loadPreviousPage = () => {
     if (page > 1) {
       const previousPage = page - 1;
       setPage(previousPage);
-      fetchData(previousPage, projectId); // Pass the projectId
+      fetchData(previousPage, "9i8o5q4pa4sj"); // Pass the projectId
     }
   };
 
@@ -79,7 +79,7 @@ function WebSeries() {
           {data &&
             data.data &&
             data.data.map((item) => (
-              <Link to={`/ShowDetails`}>
+              <Link to={`/ShowDetails/${item._id}`}>
                 <div
                   onClick={() => {
                     setVideoUrl(item.video_url);

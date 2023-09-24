@@ -79,10 +79,10 @@ border-radius: 25px;
   left: 0;
 }
 .newAddGroupDiv{
-  visibility: hidden;
+ 
 }
 .headerNewGroup{
-  visibility: hidden;
+  
 }
 .menu{
   height: 20px;
@@ -119,4 +119,7 @@ border-radius: 25px;
   width: 300px;
   height: 90vh;
   background-color: white;
+}
+.headerNewGroup{
+  visibility: visible;
 }

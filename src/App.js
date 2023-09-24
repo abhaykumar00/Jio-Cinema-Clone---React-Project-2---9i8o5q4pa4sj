@@ -72,7 +72,7 @@ function App() {
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/SortFilm" element={<SortFilm />} />
         <Route path="/Search" element={<Search />} />
-        <Route path="/ShowDetails" element={<ShowDetails />} />
+        <Route path="/ShowDetails/:id" element={<ShowDetails />} />
         <Route path="/PasswordUpdateForm" element={<PasswordUpdateForm />} />
       </Routes>
     </MyContext.Provider>

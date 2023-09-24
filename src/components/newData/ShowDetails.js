@@ -46,7 +46,7 @@ const ShowDetails = (props) => {
   console.log(gdf, "this is gdc");
   const apiUrl = `https://academics.newtonschool.co/api/v1/ott/show/${newFile._id}`;
   const headers = {
-    projectId: "62b02tyexb5i",
+    projectId: "9i8o5q4pa4sj",
   };
 
   useEffect(() => {
