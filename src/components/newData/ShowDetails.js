@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../App";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./ShowDetails.css";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Sports from "./Sports";
 import Footer from "../Footer";
 const ShowDetails = (props) => {
+  let { id } = useParams();
   const { setNewFile, newFile, setActiveLink, setVideoUrl, globalData } =
     useContext(MyContext);
   console.log(globalData[0].keywords[0], "thisi s global data");
@@ -26,7 +28,7 @@ const ShowDetails = (props) => {
     document.body.removeChild(textarea);
     toast.success(`Copied URL to clipboard`);
   };
-  // Function to handle sharing through the Web Share API
+
   const handleShare = () => {
     if (navigator.share) {
       navigator
@@ -44,7 +46,7 @@ const ShowDetails = (props) => {
     newFile.keywords.includes(data.keywords[0])
   );
   console.log(gdf, "this is gdc");
-  const apiUrl = `https://academics.newtonschool.co/api/v1/ott/show/${newFile._id}`;
+  const apiUrl = `https://academics.newtonschool.co/api/v1/ott/show/${id}`;
   const headers = {
     projectId: "9i8o5q4pa4sj",
   };
@@ -57,7 +59,6 @@ const ShowDetails = (props) => {
       .catch((error) => console.error("Error fetching data:", error));
   }, [newFile]);
 
-  // Generate a random starting index for suggested shows
   console.log(newFile.keywords);
   return (
     <div className="DeatilsPage">

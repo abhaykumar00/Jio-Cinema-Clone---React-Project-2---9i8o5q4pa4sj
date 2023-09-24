@@ -42,7 +42,7 @@ function Home() {
   if (!localStorage.getItem("jwtToken")) window.location.href = "/login";
   const fetchData = (currentPage, projectId) => {
     fetch(
-      `https://academics.newtonschool.co/api/v1/ott/show?page=${currentPage}&limit=100`,
+      `https://academics.newtonschool.co/api/v1/ott/show?page=${1}&limit=100`,
       {
         method: "GET",
         headers: {

@@ -16,7 +16,7 @@ function Sports(data) {
   const imagesPerSlide = 5;
   const slideWidth = 200;
 
-  const [currentIndex, setCurrentIndex] = useState(-1);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleClickPrev = () => {
     if (currentIndex > 0) {

@@ -61,6 +61,7 @@ function App() {
   return (
     <MyContext.Provider value={contextValue}>
       <Header />
+
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<Home />} />

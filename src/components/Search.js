@@ -71,7 +71,7 @@ function Search() {
           {watchlist.map((show) => (
             <div key={show._id} className="watch2">
               {show.title}
-              <Link to={`/play/${show._id}`}>
+              <Link to={`/ShowDetails/${show._id}`}>
                 <img
                   onClick={() => {
                     setVideoUrl(show.video_url);
