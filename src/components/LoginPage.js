@@ -119,13 +119,10 @@ function LoginPage() {
           Login
         </button>
         <p></p>
-        you dont have account ?{" "}
-        <nav
-          onClick={() => (window.location.href = "/SignUp")}
-          className="loginSignupHover"
-        >
-          signup
-        </nav>
+        you dont have account ?
+        <Link to={`/SignUp`}>
+          <nav className="loginSignupHover">signup</nav>
+        </Link>
       </form>
       <div>
         {/* <button

@@ -1,11 +1,84 @@
 .HomeContaint {
-    width: 100%;
+   
     background-color: #151515;
+   
     padding-top: 3rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+   
 }
+/* Sports.css */
+.container{
+    position: relative;
+    height: 300px;
+    margin-top: 20px;
+ justify-content: start;
+ margin-left: 20px;
+ overflow: hidden;
+}
+.thumbnail-container1 {
+    position: relative;
+    height: 300px;
+   gap: 10px;
+    
+  }
+  
+  .homeDiv {
+    position: relative;
+   
+    height: 300px;
+    display: inline-block;
+    transition: transform 0.5s ease; /* Smooth sliding transition */
+  }
+  
+  .homeDiv img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  
+  .thumbnail-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 180px;
+    padding: 10px;
+    height: 14px;
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: white;
+    text-align: center;
+    font-size: 14px; 
+    overflow: hidden;
+  }
+  
+  .arrow-button {
+  
+   position: absolute;
+   
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+    padding: 5px 10px;
+    border-radius: 50%; /* Make it circular */
+    color: black;
+    z-index: 2; /* Ensure it's above the images */
+  }
+  
+  .prev-button {
+    position: absolute;
+    left: 0;
+    bottom: 150px;
+  }
+  
+  .next-button {
+    right: 0;
+    bottom: 150px;
+  }
+  
 
 

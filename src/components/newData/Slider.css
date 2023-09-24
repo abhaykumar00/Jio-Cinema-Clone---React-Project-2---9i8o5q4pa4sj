@@ -1,0 +1,25 @@
+.slider {
+    width: 90%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .slider-container {
+    display: flex;
+    overflow: hidden;
+  }
+  
+  .slider-images {
+    display: flex;
+    transition: transform 0.3s ease; 
+    gap: 20px;
+    margin-bottom: 0;
+  }
+  
+  .slider-images img {
+  
+  }
+  .thumbnail1{
+    width: 100%;
+  }
+ 

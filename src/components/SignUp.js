@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../style/Login.css";
+import { Link } from "react-router-dom";
 function SignUp() {
   const [formData, setFormData] = useState({
     name: "",
@@ -112,13 +113,10 @@ function SignUp() {
             Sign Up
           </button>
           <p></p>
-          you already have an account{" "}
-          <nav
-            className="loginSignupHover"
-            onClick={() => (window.location.href = "/login")}
-          >
-            login
-          </nav>
+          Do you already have an account?
+          <Link to={`/login`}>
+            <nav className="loginSignupHover">login</nav>
+          </Link>
         </form>
         <div>
           {/* <button onClick={() => (window.location.href = "/login")} class="btn">

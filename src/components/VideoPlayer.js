@@ -1,15 +1,72 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { MyContext } from "../App"; // Import your context
 import "../style/Video.css";
+import { ref, set, remove } from "firebase/database";
+import { database } from "./newData/firebase";
+import { fireStoreSetting } from "./newData/fireStoreSetting";
 function VideoPlayer() {
   // Use the useContext hook to access the context
+  const myRef = useRef([]);
+  const [isValueInArray, setIsValueInArray] = useState(false);
   const [watchlist, setWatchlist] = useState([]);
   const [match, setMatch] = useState(true);
-  const { videoUrl, setNewFile, newFile } = useContext(MyContext);
+  const {
+    videoUrl,
+    setNewFile,
+    newFile,
+    fetchedFirestoreData,
+    setfetchedFirestoreData,
+  } = useContext(MyContext);
+
   const projectID = localStorage.getItem("projectID");
   const token = localStorage.getItem("jwtToken");
-  console.log(newFile, "this is new file");
+
+  async function setting(fetchVAlue = "fetch") {
+    console.log("setting");
+    await fireStoreSetting(newFile._id, fetchVAlue, myRef);
+
+    const value = myRef.current.includes(newFile._id);
+    setIsValueInArray(value);
+    console.log("this is fetch data from firebase in videoPlayer", value);
+  }
+  useEffect(() => {
+    setting();
+  }, [videoUrl]);
+  // const isValueInArray = fetchedFirestoreData.includes(newFile._id);
+  const removeShowFromWatchlist = async (showId) => {
+    try {
+      console.log(showId, "this is showID");
+      const token = localStorage.getItem("jwtToken");
+      const projectID = "Your Project ID"; // Replace with your project ID
+      const response = await fetch(
+        `https://academics.newtonschool.co/api/v1/ott/watchlist/like`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            projectID: projectID,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ showId: showId }),
+        }
+      );
+
+      if (response.ok) {
+        // Remove the show from the watchlist in the UI
+        setWatchlist((prevWatchlist) =>
+          prevWatchlist.filter((show) => show.id !== showId)
+        );
+      } else {
+        // Handle error response
+        console.error("Failed to remove show from watchlist");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+    fetchWatchlist();
+  };
   async function handleWatchList() {
+    fireStoreSetting(newFile._id, "add", myRef);
     try {
       const response = await fetch(
         "https://academics.newtonschool.co/api/v1/ott/watchlist/like/",
@@ -97,9 +154,35 @@ function VideoPlayer() {
         <source src={videoUrl} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      {match && (
+      {match && !isValueInArray && (
         <h6 className="playerWatch">
-          <span onClick={handleWatchList}>+</span>watchList
+          <span
+            onClick={() => {
+              handleWatchList();
+              setting("add").then(() => {
+                setting("fetch");
+              });
+            }}
+          >
+            +
+          </span>
+          watchList
+        </h6>
+      )}
+      {match && isValueInArray && (
+        <h6 className="playerWatch">
+          <span
+            onClick={() => {
+              removeShowFromWatchlist(newFile._id);
+
+              setting("delete").then(() => {
+                setting("fetch");
+              });
+            }}
+          >
+            -
+          </span>
+          Remove
         </h6>
       )}
     </div>

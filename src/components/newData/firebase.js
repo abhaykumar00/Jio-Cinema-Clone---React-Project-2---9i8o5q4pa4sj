@@ -1,6 +1,5 @@
-import firebase from "firebase/compat/app";
-import "firebase/compat/firestore";
-
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyCIy1BSYLgqgoXSduLvkaNkw9m6paHZ8mE",
   authDomain: "whatsapp-8ecbf.firebaseapp.com",
@@ -9,8 +8,7 @@ const firebaseConfig = {
   messagingSenderId: "939992906257",
   appId: "1:939992906257:web:d0d1e87ea5c2fe9d584fb0",
 };
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
-firebase.initializeApp(firebaseConfig);
-const firestore = firebase.firestore();
-
-export default firestore;
+export { app, database };

@@ -2,7 +2,10 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../style/Home.css";
 import { MyContext } from "../App";
-
+import ImageSlider from "./newData/ImageSlider";
+import Sports from "./newData/Sports";
+import Slider from "./newData/Slider";
+import Footer from "./Footer";
 function Home() {
   const {
     setVideoUrl,
@@ -12,13 +15,22 @@ function Home() {
     newFile,
     setLogin,
     setSeaarchActive,
+    setActiveLink,
+    activeLink,
+    globalData,
+    setGlobalData,
   } = useContext(MyContext);
   setSeaarchActive(false);
+  setActiveLink("Home");
+  console.log(activeLink, "this is active link");
   const [projectId, setProjectId] = useState("");
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [hasNextPage, setHasNextPage] = useState(true);
+  const [tvShow, setTVShow] = useState([]);
+  const [videoSong, setVideoSong] = useState([]);
+  const [movieShow, setMovieShow] = useState([]);
   setLogin(true);
   useEffect(() => {
     const storedProjectId = localStorage.getItem("projectID");
@@ -30,7 +42,7 @@ function Home() {
   if (!localStorage.getItem("jwtToken")) window.location.href = "/login";
   const fetchData = (currentPage, projectId) => {
     fetch(
-      `https://academics.newtonschool.co/api/v1/ott/show?page=${currentPage}&limit=${limit}`,
+      `https://academics.newtonschool.co/api/v1/ott/show?page=${currentPage}&limit=100`,
       {
         method: "GET",
         headers: {
@@ -42,6 +54,19 @@ function Home() {
       .then((responseJson) => {
         setData(responseJson);
         setHasNextPage(responseJson.length === limit);
+        console.log("this is data", responseJson.data);
+        setGlobalData(responseJson.data);
+        const tv = responseJson.data.filter(
+          (value) => value.type === "tv show"
+        );
+        setTVShow(tv);
+        const vid = responseJson.data.filter(
+          (value) => value.type === "video song"
+        );
+        setVideoSong(vid);
+
+        const mov = responseJson.data.filter((value) => value.type === "movie");
+        setMovieShow(mov);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -59,18 +84,32 @@ function Home() {
       setPage(previousPage);
     }
   };
-
+  console.log("this is tv show", tvShow);
   return (
     <>
-      <div className="thumbnail-container" onClick={() => setSlider(false)}>
+      <br></br>
+      <br />
+      {data && data.data && <ImageSlider data={[data.data.slice(0, 4)]} />}
+      {/* {data && data.data && <Slider data={data} />} */}
+      <p style={{ color: "white", marginLeft: "20px" }}> Video song</p>
+      {videoSong.length > 0 && <Sports data={videoSong} filter="videoSong" />}
+      <p style={{ color: "white", marginLeft: "20px" }}> TV Shows</p>
+      {tvShow.length > 0 && <Sports data={tvShow} filter="tv" />}
+      <p style={{ color: "white", marginLeft: "20px" }}> Movie</p>
+      {movieShow.length > 0 && <Sports data={movieShow} filter="Movie" />}
+      {/* <div className="thumbnail-container" onClick={() => setSlider(false)}>
         {data &&
           data.data &&
           data.data.map((item) => (
             <div key={item._id}>
-              <Link to={`/play/${item._id}`}>
+              <Link to={`/ShowDetails`}>
                 <div
                   className="homeDiv"
-                  style={{ marginRight: "0", height: "468px", width: "200px" }}
+                  style={{
+                    marginRight: "10px",
+                    height: "330px",
+                    width: "200px",
+                  }}
                 >
                   <img
                     src={item.thumbnail}
@@ -79,6 +118,7 @@ function Home() {
                     onClick={() => {
                       setVideoUrl(item.video_url);
                       setNewFile(item);
+                      console.log(item);
                     }}
                   />
 
@@ -102,8 +142,8 @@ function Home() {
                 </div>
               </Link>
             </div>
-          ))}
-        {/* <div className="Button">
+          ))}*/}
+      {/* <div className="Button">
           {page > 1 && (
             <img
               className="leftButton"
@@ -119,8 +159,8 @@ function Home() {
             />
           }
         </div> */}
-      </div>
-      <div style={{ position: "relative", bottom: "20px", left: "5px" }}>
+      {/*</div> */}
+      {/* <div style={{ position: "relative", bottom: "20px", left: "5px" }}>
         {page > 1 && (
           <button
             style={{ padding: "0 10px 0 10px ", marginRight: "10px" }}
@@ -132,7 +172,8 @@ function Home() {
         <button style={{ padding: "0 10px 0 10px " }} onClick={loadNextPage}>
           next
         </button>
-      </div>
+      </div> */}
+      <Footer />
     </>
   );
 }

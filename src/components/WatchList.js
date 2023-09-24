@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { MyContext } from "../App";
 import "../style/watchList.css";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 function Watchlist() {
   const {
     setVideoUrl,
@@ -86,30 +87,33 @@ function Watchlist() {
   };
 
   return (
-    <div className="watch" onClick={() => setSlider(false)}>
-      <h2>My Watchlist</h2>
-      <div className="watch1">
-        {watchlist.map((show) => (
-          <div key={show._id} className="watch2">
-            {show.title}
-            <Link to={`/play/${show._id}`}>
-              <img
-                onClick={() => {
-                  setVideoUrl(show.video_url);
-                  setNewFile(show);
-                }}
-                src={show.thumbnail}
-                className="watchImg"
-              ></img>
-            </Link>
+    <div>
+      <div className="watch" onClick={() => setSlider(false)}>
+        <h2>My Watchlist</h2>
+        <div className="watch1">
+          {watchlist.map((show) => (
+            <div key={show._id} className="watch2">
+              {show.title}
+              <Link to={`/ShowDetails`}>
+                <img
+                  onClick={() => {
+                    setVideoUrl(show.video_url);
+                    setNewFile(show);
+                  }}
+                  src={show.thumbnail}
+                  className="watchImg"
+                ></img>
+              </Link>
 
-            <div className="center">
-              <button onClick={() => removeShowFromWatchlist(show._id)}>
-                Remove
-              </button>
+              <div className="center">
+                <button onClick={() => removeShowFromWatchlist(show._id)}>
+                  Remove
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <Footer />
       </div>
     </div>
   );

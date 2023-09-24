@@ -1,97 +1,95 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import "../Home.css";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+import { MyContext } from "../../App";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Sports = () => {
+function Sports(data) {
+  const { setVideoUrl, setNewFile, setSlider, setLogin, setSeaarchActive } =
+    useContext(MyContext);
+  console.log("hey this is data ", data.data.length, data);
+  // You can adjust the number of images shown at once and the slide width here
+  const imagesPerSlide = 5;
+  const slideWidth = 200;
+
+  const [currentIndex, setCurrentIndex] = useState(-1);
+
+  const handleClickPrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  const handleClickNext = () => {
+    const maxIndex = data.data.length - imagesPerSlide;
+    if (currentIndex < maxIndex + 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  console.log("this is sport page", data.data);
+
   return (
-    <Container>
-      <h4>Top Sports Picks</h4>
-      <Content>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/jawaan.jpg" alt="" />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/avengers.jpg" alt="" />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/avengers.jpg" alt="" />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/avengers.jpg" alt="" />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/avengers.jpg" alt="" />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/avengers.jpg" alt="" />
-          </Link>
-        </Wrap>
-        <Wrap>
-          <Link to="/">
-            <img src="/images/avengers.jpg" alt="" />
-          </Link>
-        </Wrap>
-      </Content>
-    </Container>
+    <>
+      <div
+        className="container"
+        style={{ height: "300px", alignItems: "flex-start" }}
+      >
+        <div
+          className="thumbnail-container1"
+          onClick={() => setSlider(false)}
+          style={{
+            transform: `translateX(-${currentIndex * slideWidth}px)`,
+            display: "flex",
+            flexDirection: "row",
+            transition: "transform 0.5s ease",
+          }}
+        >
+          {data &&
+            data.data &&
+            data.data.map((item) => (
+              <div key={item._id} className="slide">
+                <Link to={`/ShowDetails`}>
+                  <div className="homeDiv">
+                    <img
+                      src={item.thumbnail}
+                      alt={item.title}
+                      className="thumbnail"
+                      style={{ width: "200px" }}
+                      onClick={() => {
+                        setVideoUrl(item.video_url);
+                        setNewFile(item);
+                      }}
+                    />
+                    <h5 className="thumbnail-title">{item.title}</h5>
+                  </div>
+                </Link>
+              </div>
+            ))}
+        </div>
+        {currentIndex > 0 && (
+          <button
+            className="arrow-button prev-button"
+            onClick={handleClickPrev}
+            disabled={currentIndex === 0}
+          >
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </button>
+        )}
+        <button
+          className="arrow-button next-button"
+          onClick={handleClickNext}
+          disabled={currentIndex === data.data.length - imagesPerSlide}
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
+      </div>
+    </>
   );
-};
+}
 
-const Container = styled.div`
-  padding-top: 40px;
-`;
-
-const Content = styled.div`
-  display: grid;
-  grid-gap: 25px;
-  gap: 15px;
-  padding-top: 15px;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-`;
-
-const Wrap = styled.div`
-  padding-top: 70px;
-  border-radius: 20px;
-  cursor: pointer;
-  overflow: hidden;
-  position: relative;
-  transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
-  border: 3px solid rgba(249, 249, 249, 0.1);
-  height: 300px;
-
-  img {
-    inset: 0px;
-    display: block;
-    height: 100%;
-    object-fit: cover;
-    opacity: 1;
-    position: absolute;
-    width: 100%;
-    transition: opacity 500ms ease-in-out 0s;
-    z-index: 1;
-    top: 0;
-    overflow: hidden;
-  }
-
-  &:hover {
-    box-shadow: rgb(0 0 0 /80%) 0px 40px 58px -16px,
-      rgb(0 0 0 /72%) 0px 30px 22px -10px;
-    transform: scale(1.05);
-    border-color: rgba(249, 249, 249, 0.8);
-  }
-`;
 export default Sports;

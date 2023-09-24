@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-
-const ImageSlider = () => {
+import "./ImageSlider.css";
+import { MyContext } from "../../App";
+import { Link } from "react-router-dom";
+const ImageSlider = ({ data }) => {
+  console.log(data, "this is data in image slider");
+  const {
+    setVideoUrl,
+    slider,
+    setSlider,
+    setNewFile,
+    newFile,
+    setLogin,
+    setSeaarchActive,
+    setActiveLink,
+    activeLink,
+  } = useContext(MyContext);
   let settings = {
     dots: true,
     infinite: true,
@@ -15,31 +29,75 @@ const ImageSlider = () => {
   };
 
   return (
-    <Carousel {...settings}>
-      <Wrap>
-        <a>
-          <img src="/images/slider-1.jpg" alt="" />
-        </a>
-      </Wrap>
-      <Wrap>
-        <a>
-          <img src="/images/slider-2.jpg" alt="" />
-        </a>
-      </Wrap>
-      <Wrap>
-        <a>
-          <img src="/images/slider-3.jpg" alt="" />
-          {/* <video autoplay={true} loop={true} playsInline={true}>
-            <source src='/videos/WandaVision.mp4' type="video/mp4"></source>
-        </video> */}
-        </a>
-      </Wrap>
-      <Wrap>
-        <a>
-          <img src="/images/slider-4.jpg" alt="" />
-        </a>
-      </Wrap>
-    </Carousel>
+    <div style={{ overflow: "hidden" }}>
+      <Carousel {...settings}>
+        <Wrap>
+          <Link to={`/ShowDetails`}>
+            <a>
+              {data && data[0] && (
+                <img
+                  onClick={() => {
+                    setVideoUrl(data[0][0].video_url);
+                    setNewFile(data[0][0]);
+                  }}
+                  src={data[0][0].thumbnail}
+                  alt=""
+                />
+              )}
+            </a>
+          </Link>
+        </Wrap>
+
+        <Wrap>
+          <Link to={`/ShowDetails`}>
+            <a>
+              {data && data[0] && (
+                <img
+                  onClick={() => {
+                    setVideoUrl(data[0][1].video_url);
+                    setNewFile(data[0][1]);
+                  }}
+                  src={data[0][1].thumbnail}
+                  alt=""
+                />
+              )}
+            </a>
+          </Link>
+        </Wrap>
+        <Wrap>
+          <Link to={`/ShowDetails`}>
+            <a>
+              {data && data[0] && (
+                <img
+                  onClick={() => {
+                    setVideoUrl(data[0][2].video_url);
+                    setNewFile(data[0][2]);
+                  }}
+                  src={data[0][2].thumbnail}
+                  alt=""
+                />
+              )}
+            </a>
+          </Link>
+        </Wrap>
+        <Wrap>
+          <Link to={`/ShowDetails`}>
+            <a>
+              {data && data[0] && (
+                <img
+                  onClick={() => {
+                    setVideoUrl(data[0][3].video_url);
+                    setNewFile(data[0][3]);
+                  }}
+                  src={data[0][3].thumbnail}
+                  alt=""
+                />
+              )}
+            </a>
+          </Link>
+        </Wrap>
+      </Carousel>
+    </div>
   );
 };
 
@@ -49,7 +107,7 @@ const Carousel = styled(Slider)`
   & > button {
     opacity: 0;
     height: 100%;
-    width: 5vw;
+    width: 1vw;
     z-index: 1;
 
     &:hover {
@@ -98,12 +156,18 @@ const Wrap = styled.div`
 
     img {
       width: 100%;
-      height: 100%;
+      height: 80vh;
     }
 
     &:hover {
       border: 4px solid rgba(249, 249, 249, 0.8);
       transition-duration: 300ms;
+    }
+    @media (width<600px) {
+      img {
+        width: 90vw;
+        height: 50vh;
+      }
     }
 
     video {

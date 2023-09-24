@@ -5,10 +5,11 @@
     flex-wrap: wrap;
     gap: 10px;
     cursor: pointer;
-
+    border: none;
     background-color: black;
     color: white;
-    
+    column-gap: 20px;
+    row-gap: 100px;
 }
 .webseries{
     margin-top: 100px;
@@ -17,26 +18,36 @@
 .webseries h2{
     text-align: center;
     text-decoration: none;
+    
 }
 .card1{
-    height: 450px;
-    width: 250px;
-
+    height: 300px;
+    width: 200px;
+    position: relative;
+    text-align: center;
+    align-items: center;
+    
 }
 .card1 img{
     filter: blur(1px);
-    height: 450px;
-    width: 250px;
+    height: 300px;
+    width: 200px;
     border-radius: 20px;
 }
 .card img:hover{
     filter: blur(5px);
 }
 .card1 h3{
-    position: relative;
-    bottom: 120px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    height: 14px;
+    background-color: rgba(0, 0, 0, 0.5); 
     color: white;
-    align-self: center;
-    align-items: center;
     text-align: center;
+    font-size: 14px; 
+    overflow: hidden;
+  
 }

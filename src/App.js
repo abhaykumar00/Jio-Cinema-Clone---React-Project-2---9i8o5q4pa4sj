@@ -17,6 +17,7 @@ import SignUp from "./components/SignUp";
 import Search from "./components/Search";
 import PasswordUpdateForm from "./components/PasswordUpdateForm";
 import SortFilm from "./components/SortFilm";
+import ShowDetails from "./components/newData/ShowDetails";
 // import Home from "./Home"; // Import your Home component
 // import Subscription from "./Subscription"; // Import your Subscription component
 // import Movies from "./Movies"; // Import your Movies component
@@ -31,9 +32,13 @@ function App() {
   const [login, setLogin] = useState(false);
   const [searchVAlue, setSearchVAlue] = useState("");
   const [searchActive, setSeaarchActive] = useState(false);
+  const [fetchedFirestoreData, setfetchedFirestoreData] = useState([]);
+  const [globalData, setGlobalData] = useState([]);
   const inputRef = useRef("null");
   // Define the context value as an object
   const contextValue = {
+    globalData,
+    setGlobalData,
     inputRef,
     videoUrl,
     setVideoUrl,
@@ -49,6 +54,8 @@ function App() {
     setSearchVAlue,
     searchActive,
     setSeaarchActive,
+    fetchedFirestoreData,
+    setfetchedFirestoreData,
   };
 
   return (
@@ -65,6 +72,7 @@ function App() {
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/SortFilm" element={<SortFilm />} />
         <Route path="/Search" element={<Search />} />
+        <Route path="/ShowDetails" element={<ShowDetails />} />
         <Route path="/PasswordUpdateForm" element={<PasswordUpdateForm />} />
       </Routes>
     </MyContext.Provider>

@@ -3,6 +3,7 @@ import "../style/Home.css";
 import "../style/webseries.css";
 import { Link } from "react-router-dom";
 import { MyContext } from "../App";
+import Footer from "./Footer";
 function SortFilm() {
   const [projectId, setProjectId] = useState("");
   const [data, setData] = useState([]);
@@ -64,13 +65,13 @@ function SortFilm() {
 
   return (
     <div className="webseries" onClick={() => setSlider(false)}>
-      <h2>Welcome to the Sort Film Page</h2>
+      <h2>Sort Film </h2>
 
       <div className="card">
         {data &&
           data.data &&
           data.data.map((item) => (
-            <Link to={`/play/${item._id}`}>
+            <Link to={`/ShowDetails`}>
               <div
                 onClick={() => {
                   setVideoUrl(item.video_url);
@@ -86,10 +87,11 @@ function SortFilm() {
             </Link>
           ))}
       </div>
-      <div>
+      {/* <div>
         {page > 1 && <button onClick={loadPreviousPage}>Previous Page</button>}
         {<button onClick={loadNextPage}>Next Page</button>}
-      </div>
+      </div> */}
+      <Footer />
     </div>
   );
 }

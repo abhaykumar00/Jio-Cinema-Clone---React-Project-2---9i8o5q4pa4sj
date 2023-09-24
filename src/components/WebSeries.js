@@ -3,6 +3,7 @@ import "../style/Home.css";
 import "../style/webseries.css";
 import { Link } from "react-router-dom";
 import { MyContext } from "../App";
+import Footer from "./Footer";
 function WebSeries() {
   const [projectId, setProjectId] = useState("");
   const [data, setData] = useState([]);
@@ -67,37 +68,40 @@ function WebSeries() {
   };
 
   return (
-    <div className="webseries" onClick={() => setSlider(false)}>
-      <h2>Welcome to the Web Series Page</h2>
+    <>
+      <div className="webseries" onClick={() => setSlider(false)}>
+        <h2>Webseries</h2>
 
-      {/* <p>Project ID: {projectId}</p> */}
-      {/* Display data fetched from the API */}
-      {/* <pre>{JSON.stringify(data.data, null, 2)}</pre> */}
-      <div className="card">
-        {data &&
-          data.data &&
-          data.data.map((item) => (
-            <Link to={`/play/${item._id}`}>
-              <div
-                onClick={() => {
-                  setVideoUrl(item.video_url);
-                  setNewFile(item);
-                }}
-                key={item._id}
-                className="card1"
-              >
-                <img src={item.thumbnail} alt={item.title} />
+        {/* <p>Project ID: {projectId}</p> */}
+        {/* Display data fetched from the API */}
+        {/* <pre>{JSON.stringify(data.data, null, 2)}</pre> */}
+        <div className="card">
+          {data &&
+            data.data &&
+            data.data.map((item) => (
+              <Link to={`/ShowDetails`}>
+                <div
+                  onClick={() => {
+                    setVideoUrl(item.video_url);
+                    setNewFile(item);
+                  }}
+                  key={item._id}
+                  className="card1"
+                >
+                  <img src={item.thumbnail} alt={item.title} />
 
-                <h3 className="card-title">{item.title}</h3>
-              </div>
-            </Link>
-          ))}
-      </div>
-      <div>
+                  <h3 className="card-title">{item.title}</h3>
+                </div>
+              </Link>
+            ))}
+        </div>
+        {/* <div>
         {page > 1 && <button onClick={loadPreviousPage}>Previous Page</button>}
         {<button onClick={loadNextPage}>Next Page</button>}
+      </div> */}
       </div>
-    </div>
+      <Footer />
+    </>
   );
 }
 
