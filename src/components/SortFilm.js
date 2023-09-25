@@ -4,6 +4,7 @@ import "../style/webseries.css";
 import { Link } from "react-router-dom";
 import { MyContext } from "../App";
 import Footer from "./Footer";
+import { ListItem } from "@mui/material";
 function SortFilm() {
   const [projectId, setProjectId] = useState("");
   const [data, setData] = useState([]);
@@ -26,6 +27,7 @@ function SortFilm() {
       setProjectId(storedProjectId);
       fetchData(page, storedProjectId);
     }
+    fetchData();
   }, []);
 
   const fetchData = (currentPage, projectId) => {
@@ -76,6 +78,7 @@ function SortFilm() {
                 onClick={() => {
                   setVideoUrl(item.video_url);
                   setNewFile(item);
+                  localStorage.setItem("newFile", JSON.stringify(item));
                 }}
                 key={item._id}
                 className="card1"

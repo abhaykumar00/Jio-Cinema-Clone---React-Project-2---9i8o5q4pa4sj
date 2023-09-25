@@ -63,6 +63,7 @@ function Sports(data) {
                       onClick={() => {
                         setVideoUrl(item.video_url);
                         setNewFile(item);
+                        localStorage.setItem("newFile", JSON.stringify(item));
                       }}
                     />
                     <h5 className="thumbnail-title">{item.title}</h5>

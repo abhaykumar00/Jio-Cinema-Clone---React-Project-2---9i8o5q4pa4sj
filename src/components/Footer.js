@@ -35,7 +35,7 @@ const Footer = () => {
         </a>
       </div>
 
-      <div>
+      <div className="rowFooter">
         <h2 className="connects">Connect With Us</h2>
         <a href="https://www.facebook.com/JioCinema/">
           <img

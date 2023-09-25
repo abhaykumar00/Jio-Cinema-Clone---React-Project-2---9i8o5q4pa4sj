@@ -39,6 +39,7 @@ const ImageSlider = ({ data }) => {
                   onClick={() => {
                     setVideoUrl(data[0][0].video_url);
                     setNewFile(data[0][0]);
+                    localStorage.setItem("newFile", JSON.stringify(data[0][0]));
                   }}
                   src={data[0][0].thumbnail}
                   alt=""
@@ -56,6 +57,7 @@ const ImageSlider = ({ data }) => {
                   onClick={() => {
                     setVideoUrl(data[0][1].video_url);
                     setNewFile(data[0][1]);
+                    localStorage.setItem("newFile", JSON.stringify(data[0][1]));
                   }}
                   src={data[0][1].thumbnail}
                   alt=""
@@ -72,6 +74,10 @@ const ImageSlider = ({ data }) => {
                   onClick={() => {
                     setVideoUrl(data[0][2].video_url);
                     setNewFile(data[0][2]);
+                    localStorage.setItem(
+                      "newFile",
+                      JSON.stringify(data[(0, 2)])
+                    );
                   }}
                   src={data[0][2].thumbnail}
                   alt=""
@@ -88,6 +94,7 @@ const ImageSlider = ({ data }) => {
                   onClick={() => {
                     setVideoUrl(data[0][3].video_url);
                     setNewFile(data[0][3]);
+                    localStorage.setItem("newFile", JSON.stringify(data[0][3]));
                   }}
                   src={data[0][3].thumbnail}
                   alt=""

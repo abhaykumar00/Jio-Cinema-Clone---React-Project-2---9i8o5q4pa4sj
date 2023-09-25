@@ -12,12 +12,11 @@ function Search() {
     setActiveLink,
     setSeaarchActive,
     searchVAlue,
-    inputRef,
   } = useContext(MyContext);
   setSeaarchActive(true);
   const [watchlist, setWatchlist] = useState([]);
   setActiveLink("");
-  console.log("this is search", searchVAlue);
+
   useEffect(() => {
     fetchWatchlist();
   }, [searchVAlue]);
@@ -28,7 +27,7 @@ function Search() {
 
       // Append the showID as a query parameter to the URL
       const apiUrl = `https://academics.newtonschool.co/api/v1/ott/show?page=${1}&limit=${100}`;
-      console.log("Fetchlist is callesrl");
+
       const response = await fetch(apiUrl, {
         method: "GET",
         headers: {
@@ -39,11 +38,12 @@ function Search() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data.data[0], "this is fetchlist");
+
         const filteredList = data.data.filter(
           (item) =>
             item.keywords.includes(searchVAlue) ||
-            item.description.includes(searchVAlue)
+            item.description.includes(searchVAlue) ||
+            item.description.indexOf(searchVAlue) !== -1
         );
 
         setWatchlist(filteredList);
@@ -55,13 +55,6 @@ function Search() {
       console.error("Error:", error);
     }
   }
-
-  useEffect(() => {
-    // Fetch the user's watchlist using the "Get My Watchlist" endpoint
-    console.log("rhis is useEffect");
-  }, []);
-
-  // Function to handle removing a show from the watchlist
 
   return (
     <div className="watch">
@@ -76,6 +69,7 @@ function Search() {
                   onClick={() => {
                     setVideoUrl(show.video_url);
                     setNewFile(show);
+                    localStorage.setItem("newFile", JSON.stringify(show));
                   }}
                   src={show.thumbnail}
                   className="watchImg"

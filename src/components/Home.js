@@ -38,6 +38,7 @@ function Home() {
       setProjectId(storedProjectId);
       fetchData(page, storedProjectId);
     }
+    fetchData();
   }, [page]); // Update data when the page changes
   if (!localStorage.getItem("jwtToken")) window.location.href = "/login";
   const fetchData = (currentPage, projectId) => {

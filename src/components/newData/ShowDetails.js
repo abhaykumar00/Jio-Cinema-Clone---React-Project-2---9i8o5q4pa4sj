@@ -8,44 +8,22 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Sports from "./Sports";
 import Footer from "../Footer";
-const ShowDetails = (props) => {
+const ShowDetails = () => {
+  const newFile = JSON.parse(localStorage.getItem("newFile"));
   let { id } = useParams();
-  const { setNewFile, newFile, setActiveLink, setVideoUrl, globalData } =
+  const { setNewFile, setActiveLink, setVideoUrl, globalData } =
     useContext(MyContext);
-  console.log(globalData[0].keywords[0], "thisi s global data");
-  console.log(globalData[0].keywords[0], "thisi s global data");
+  console.log("this is newFile in ShowDEtails", newFile);
   setVideoUrl(newFile.video_url);
   const [slidedetailapi, setslidedetailapi] = useState({});
-  const [randomSliceStart, setRandomSliceStart] = useState(0);
-  setActiveLink("heloo");
+
+  setActiveLink("helo");
   // Function to copy URL to clipboard and show a toast
-  const share = () => {
-    const textarea = document.createElement("textarea");
-    textarea.value = "url";
-    document.body.appendChild(textarea);
-    textarea.select();
 
-    document.body.removeChild(textarea);
-    toast.success(`Copied URL to clipboard`);
-  };
-
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator
-        .share({
-          title: "Share",
-          text: "Shrable",
-          url: "url",
-        })
-        .catch((error) => console.error("Error sharing:", error));
-    } else {
-      console.log("Sharing not supported on this browser.");
-    }
-  };
   const gdf = globalData.filter((data) =>
     newFile.keywords.includes(data.keywords[0])
   );
-  console.log(gdf, "this is gdc");
+
   const apiUrl = `https://academics.newtonschool.co/api/v1/ott/show/${id}`;
   const headers = {
     projectId: "9i8o5q4pa4sj",
@@ -55,11 +33,13 @@ const ShowDetails = (props) => {
     window.scrollTo(0, 0);
     fetch(apiUrl, { headers })
       .then((response) => response.json())
-      .then((data) => setslidedetailapi(data.data))
+      .then((data) => {
+        setslidedetailapi(data.data);
+        setNewFile(data.data);
+      })
       .catch((error) => console.error("Error fetching data:", error));
-  }, [newFile]);
+  }, []);
 
-  console.log(newFile.keywords);
   return (
     <div className="DeatilsPage">
       <section className="detailssection">
@@ -101,12 +81,7 @@ const ShowDetails = (props) => {
               </Link>
             </div>
             <div className="detailsactionbtn">
-              <div
-                onClick={() => {
-                  share();
-                  handleShare();
-                }}
-              ></div>{" "}
+              <div onClick={() => {}}></div>{" "}
             </div>
           </div>
         </div>

@@ -18,6 +18,7 @@ import Search from "./components/Search";
 import PasswordUpdateForm from "./components/PasswordUpdateForm";
 import SortFilm from "./components/SortFilm";
 import ShowDetails from "./components/newData/ShowDetails";
+import Footer from "./components/Footer";
 // import Home from "./Home"; // Import your Home component
 // import Subscription from "./Subscription"; // Import your Subscription component
 // import Movies from "./Movies"; // Import your Movies component
@@ -35,6 +36,7 @@ function App() {
   const [fetchedFirestoreData, setfetchedFirestoreData] = useState([]);
   const [globalData, setGlobalData] = useState([]);
   const inputRef = useRef("null");
+
   // Define the context value as an object
   const contextValue = {
     globalData,

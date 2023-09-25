@@ -47,12 +47,10 @@ function Watchlist() {
   }
 
   useEffect(() => {
-    // Fetch the user's watchlist using the "Get My Watchlist" endpoint
-    console.log("rhis is useEffect");
+    console.log("this is useEffect inside the watchlist for fetch the data");
     fetchWatchlist();
   }, []);
 
-  // Function to handle removing a show from the watchlist
   const removeShowFromWatchlist = async (showId) => {
     try {
       console.log(showId, "this is showID");
@@ -99,6 +97,7 @@ function Watchlist() {
                   onClick={() => {
                     setVideoUrl(show.video_url);
                     setNewFile(show);
+                    localStorage.setItem("newFile", JSON.stringify(show));
                   }}
                   src={show.thumbnail}
                   className="watchImg"

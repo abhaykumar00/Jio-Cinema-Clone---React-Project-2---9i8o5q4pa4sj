@@ -20,23 +20,22 @@ function WebSeries() {
   } = useContext(MyContext);
   setSeaarchActive(false);
   useEffect(() => {
-    // Fetch the projectId from wherever it is stored (e.g., localStorage)
     const storedProjectId = localStorage.getItem("projectID");
     if (storedProjectId) {
       setProjectId(storedProjectId);
-      fetchData(page, "9i8o5q4pa4sj"); // Fetch data for the initial page
+      fetchData(page, "9i8o5q4pa4sj");
     }
+    fetchData();
   }, []);
 
-  const fetchData = (currentPage, projectId) => {
+  const fetchData = async (currentPage, projectId) => {
     // Make the API call with projectId in the header and dynamic page and limit values
-    fetch(
+    await fetch(
       `https://academics.newtonschool.co/api/v1/ott/show?filter={"type" : "web series"}`,
       {
         method: "GET",
         headers: {
-          projectID: "9i8o5q4pa4sj", // Use the projectId passed as a parameter
-          // Add any other headers if needed
+          projectID: "9i8o5q4pa4sj",
         },
       }
     )
@@ -56,14 +55,14 @@ function WebSeries() {
   const loadNextPage = () => {
     const nextPage = page + 1;
     setPage(nextPage);
-    fetchData(nextPage, "9i8o5q4pa4sj"); // Pass the projectId
+    fetchData(nextPage, "9i8o5q4pa4sj");
   };
 
   const loadPreviousPage = () => {
     if (page > 1) {
       const previousPage = page - 1;
       setPage(previousPage);
-      fetchData(previousPage, "9i8o5q4pa4sj"); // Pass the projectId
+      fetchData(previousPage, "9i8o5q4pa4sj");
     }
   };
 
@@ -84,6 +83,7 @@ function WebSeries() {
                   onClick={() => {
                     setVideoUrl(item.video_url);
                     setNewFile(item);
+                    localStorage.setItem("newFile", JSON.stringify(item));
                   }}
                   key={item._id}
                   className="card1"

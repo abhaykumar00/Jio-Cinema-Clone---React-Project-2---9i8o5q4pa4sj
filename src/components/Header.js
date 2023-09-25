@@ -62,7 +62,11 @@ function Header() {
           className="menu"
           src="https://th.bing.com/th/id/OIP.TxsaadwZtg4rcZHQJvFGpgHaHX?pid=ImgDet&rs=1"
         ></img>
-        <img src="https://www.jiocinema.com/images/jc_logo_v2.svg" alt="logo" />
+        <img
+          className="logoofJio"
+          src="https://www.jiocinema.com/images/jc_logo_v2.svg"
+          alt="logo"
+        />
         {myLocalData.map((data) => (
           <h4
             className={` ${activeLink === data[1] ? "active" : ""}`}
@@ -207,6 +211,19 @@ function Header() {
               </Link>
             </h4>
           ))}
+          {login && (
+            <h6
+              onClick={() => {
+                localStorage.setItem("jwtToken", "");
+                localStorage.setItem("myName", "");
+                setActiveLink("sd");
+                window.location.href = "/";
+              }}
+              className="lessWidthSignOut"
+            >
+              SignOut
+            </h6>
+          )}
         </div>
       )}
       <div className="header2">
