@@ -149,14 +149,15 @@ function VideoPlayer() {
 
   return (
     <div className="video-player-container">
-      <h2>Video Player</h2>
-      <video controls>
+      <h2 className="video-h2">Video Player</h2>
+      <video className="video-video" controls>
         <source src={videoUrl} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       {match && !isValueInArray && (
         <h6 className="playerWatch">
           <span
+            className="playerWatch-span"
             onClick={() => {
               handleWatchList();
               setting("add").then(() => {

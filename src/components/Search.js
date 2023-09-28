@@ -58,11 +58,11 @@ function Search() {
 
   return (
     <div className="watch">
-      <h2>SearchList</h2>
+      <h2 className="watch-h2">SearchList</h2>
       {searchVAlue && (
-        <div className="watch1">
+        <div className="watch-First-Div">
           {watchlist.map((show) => (
-            <div key={show._id} className="watch2">
+            <div key={show._id} className="watch-child-div">
               {show.title}
               <Link to={`/ShowDetails/${show._id}`}>
                 <img

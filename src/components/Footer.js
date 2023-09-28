@@ -6,56 +6,74 @@ const Footer = () => {
     <div className="footer">
       <div className="rowFooter">
         <h5>JioCinema</h5>
-        <a href="#">
+        <a className="footer-a" href="#">
           <p>For You</p>
         </a>
-        <a href="#">
+        <a className="footer-a" href="#">
           <p>Sports</p>
         </a>
-        <a href="#">
+        <a className="footer-a" href="#">
           <p>Movie</p>
         </a>
-        <a href="#">
+        <a className="footer-a" href="#">
           <p>TV Shows</p>
         </a>
       </div>
       <div>
         <h5>Support</h5>
-        <a href="https://www.jiocinema.com/help?uid=897f0698-45cd-40d4-a986-be68e059d1cf&name=Meghna_7002">
+        <a
+          className="footer-a"
+          href="https://www.jiocinema.com/help?uid=897f0698-45cd-40d4-a986-be68e059d1cf&name=Meghna_7002"
+        >
           <p>Help Center</p>
         </a>
-        <a href="https://www.jiocinema.com/tou?uid=897f0698-45cd-40d4-a986-be68e059d1cf&name=Meghna_7002">
+        <a
+          className="footer-a"
+          href="https://www.jiocinema.com/tou?uid=897f0698-45cd-40d4-a986-be68e059d1cf&name=Meghna_7002"
+        >
           <p>Terms of Use</p>
         </a>
-        <a href="https://www.jiocinema.com/pp?uid=897f0698-45cd-40d4-a986-be68e059d1cf&name=Meghna_7002">
+        <a
+          className="footer-a"
+          href="https://www.jiocinema.com/pp?uid=897f0698-45cd-40d4-a986-be68e059d1cf&name=Meghna_7002"
+        >
           <p>Privacy Policy</p>
         </a>
-        <a href="https://www.jiocinema.com/cc?uid=897f0698-45cd-40d4-a986-be68e059d1cf&name=Meghna_7002">
+        <a
+          className="footer-a"
+          href="https://www.jiocinema.com/cc?uid=897f0698-45cd-40d4-a986-be68e059d1cf&name=Meghna_7002"
+        >
           <p>content Complents</p>
         </a>
       </div>
 
       <div className="rowFooter">
         <h2 className="connects">Connect With Us</h2>
-        <a href="https://www.facebook.com/JioCinema/">
+        <a className="connects-a" href="https://www.facebook.com/JioCinema/">
           <img
             src="https://www.jiocinema.com/images/facebook.svg"
             alt="Facebook"
-          />
+          />{" "}
         </a>
-        <a href="https://twitter.com/JioCinema">
+        <a className="connects-a" href="https://twitter.com/JioCinema">
           <img
             src="https://www.jiocinema.com/images/twitter.svg"
             alt="Twitter"
           />
         </a>
-        <a href="https://www.instagram.com/officialjiocinema/">
+        <a
+          className="connects-a"
+          href="https://www.instagram.com/officialjiocinema/"
+        >
           <img
             src="https://www.jiocinema.com/images/instagram.svg"
             alt="Instagram"
           />
         </a>
-        <a href="https://www.youtube.com/channel/UC8To9CFsZzvPafxMLzS08iA">
+        <a
+          className="connects-a"
+          href="https://www.youtube.com/channel/UC8To9CFsZzvPafxMLzS08iA"
+        >
           <img
             src="https://www.jiocinema.com/images/youtube.svg"
             alt="YouTube"

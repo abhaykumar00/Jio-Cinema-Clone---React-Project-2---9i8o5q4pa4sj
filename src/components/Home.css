@@ -9,18 +9,23 @@
    
 }
 /* Sports.css */
-.container{
+.container1{
     position: relative;
     height: 300px;
     margin-top: 20px;
  justify-content: start;
  margin-left: 20px;
  overflow: hidden;
+ align-items: flex-start;
 }
-.thumbnail-container1 {
+.thumbnail-containerDiv {
     position: relative;
     height: 300px;
    gap: 10px;
+  
+   display: flex;
+   flex-direction: row;
+   transition: transform 0.5s ease;
     
   }
   
@@ -32,7 +37,7 @@
     transition: transform 0.5s ease; /* Smooth sliding transition */
   }
   
-  .homeDiv img {
+  .thumbnail {
     width: 200px;
     height: 300px;
     object-fit: cover;
@@ -79,6 +84,9 @@
     right: 0;
     bottom: 150px;
   }
-  
+  .mainHome{
+    color: white;
+    margin-left: 20px;
+  }
 
 

@@ -29,13 +29,14 @@ const ImageSlider = ({ data }) => {
   };
 
   return (
-    <div style={{ overflow: "hidden" }}>
+    <div className="imageSlider">
       <Carousel {...settings}>
-        <Wrap>
+        <div className="wrap">
           <Link to={`/ShowDetails/${data[0][0]._id}`}>
-            <a>
+            <a className="wrap-a">
               {data && data[0] && (
                 <img
+                  className="wrap-a-img"
                   onClick={() => {
                     setVideoUrl(data[0][0].video_url);
                     setNewFile(data[0][0]);
@@ -47,13 +48,14 @@ const ImageSlider = ({ data }) => {
               )}
             </a>
           </Link>
-        </Wrap>
+        </div>
 
-        <Wrap>
+        <div className="wrap">
           <Link to={`/ShowDetails/${data[0][1]._id}`}>
-            <a>
+            <a className="wrap-a">
               {data && data[0] && (
                 <img
+                  className="wrap-a-img"
                   onClick={() => {
                     setVideoUrl(data[0][1].video_url);
                     setNewFile(data[0][1]);
@@ -65,12 +67,13 @@ const ImageSlider = ({ data }) => {
               )}
             </a>
           </Link>
-        </Wrap>
-        <Wrap>
+        </div>
+        <div className="wrap">
           <Link to={`/ShowDetails/${data[0][2]._id}`}>
-            <a>
+            <a className="wrap-a">
               {data && data[0] && (
                 <img
+                  className="wrap-a-img"
                   onClick={() => {
                     setVideoUrl(data[0][2].video_url);
                     setNewFile(data[0][2]);
@@ -85,12 +88,13 @@ const ImageSlider = ({ data }) => {
               )}
             </a>
           </Link>
-        </Wrap>
-        <Wrap>
+        </div>
+        <div className="wrap">
           <Link to={`/ShowDetails/${data[0][3]._id}`}>
-            <a>
+            <a className="wrap-a">
               {data && data[0] && (
                 <img
+                  className="wrap-a-img"
                   onClick={() => {
                     setVideoUrl(data[0][3].video_url);
                     setNewFile(data[0][3]);
@@ -102,7 +106,7 @@ const ImageSlider = ({ data }) => {
               )}
             </a>
           </Link>
-        </Wrap>
+        </div>
       </Carousel>
     </div>
   );
@@ -114,20 +118,11 @@ const Carousel = styled(Slider)`
   & > button {
     opacity: 0;
     height: 100%;
-    width: 1vw;
+    width: s5vw;
     z-index: 1;
-
-    &:hover {
-      opacity: 1;
-      transition: opacity 0.2s ease 0s;
-    }
   }
 
-  ul li button {
-    &:before {
-      font-size: 20px;
-      color: rgb(150, 158, 171);
-    }
+ 
   }
 
   li.slick-active button:before {
@@ -144,45 +139,6 @@ const Carousel = styled(Slider)`
 
   .slick-next {
     right: -75px;
-  }
-`;
-
-const Wrap = styled.div`
-  border-radius: 4px;
-  cursor: pointer;
-  position: relative;
-
-  a {
-    border-radius: 4px;
-    box-shadow: rgb(0 0 0/ 69%) 0px 26px 30px -10px,
-      rgb(0 0 0/ 73%) 0px 16px 10px -10px;
-    cursor: pointer;
-    display: block;
-    position: relative;
-    padding: 4px;
-
-    img {
-      width: 100%;
-      height: 80vh;
-    }
-
-    &:hover {
-      border: 4px solid rgba(249, 249, 249, 0.8);
-      transition-duration: 300ms;
-    }
-    @media (width<600px) {
-      img {
-        width: 90vw;
-        height: 50vh;
-      }
-    }
-
-    video {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0px;
-    }
   }
 `;
 

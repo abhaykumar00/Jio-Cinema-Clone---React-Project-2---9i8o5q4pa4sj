@@ -6,23 +6,27 @@
     margin-bottom: 10px;
    
 }
-.watch h2{
+/* //.watch h2 */
+.watch-h2{ 
     align-self: center;
     align-content: center;
     color: white;
     margin-left: 20px;
     
 }
-.watch2{
+/* //.watch2 */
+.watch-child-div{ 
     height: 400px;
     width: 200px;
     align-items: center;
 }
-.watch2 button{
+
+/* .watch2 button */
+.centerButton{ 
     align-self: center;
     align-items: center;
 }
-.watch2:hover{
+.watch-child-div:hover{
     cursor: pointer;
 }
 .watchImg{
@@ -32,7 +36,7 @@
   object-fit: cover;
 
 }
-.watch1{
+.watch-First-Div{
     display: flex;
     flex-direction: row;
    margin-left: 10px;

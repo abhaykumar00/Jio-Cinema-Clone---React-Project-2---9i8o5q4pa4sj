@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Watchlist from "./components/WatchList";
 import Header from "./components/Header";
-import Movies from "./components/Movies";
+
 import Home from "./components/Home";
 import LoginPage from "./components/LoginPage";
 import WebSeries from "./components/WebSeries";

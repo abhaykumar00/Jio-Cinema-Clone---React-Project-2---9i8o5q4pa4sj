@@ -3,14 +3,7 @@ import SignUp from "./SignUp";
 import { MyContext } from "../App";
 import { Link } from "react-router-dom";
 function LoginPage() {
-  const {
-    setVideoUrl,
-    slider,
-    setSlider,
-    activeLink,
-    setActiveLink,
-    setLogin,
-  } = useContext(MyContext);
+  const { setActiveLink, setLogin } = useContext(MyContext);
   setActiveLink("he");
   const [error, setError] = useState();
   const [signup, setSignup] = useState(false);

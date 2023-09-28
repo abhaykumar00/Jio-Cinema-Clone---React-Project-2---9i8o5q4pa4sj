@@ -1,0 +1,76 @@
+.imageSlider{
+    overflow: hidden;
+}
+.carousel{
+    margin-top: 20px;
+
+}
+.carousel-button{
+    opacity: 0;
+    height: 100%;
+    width: 1vw;
+    z-index: 1;
+}
+.carousel:hover{
+    opacity: 1;
+      transition: opacity 0.2s ease 0s;
+}
+.wrap{
+    border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  margin-top: 30px;
+}
+.wrap-a{
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0/ 69%) 0px 26px 30px -10px,
+      rgb(0 0 0/ 73%) 0px 16px 10px -10px;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    padding: 4px;
+}
+.wrap-a:hover{
+    border: 4px solid rgba(249, 249, 249, 0.8);
+      transition-duration: 300ms;
+}
+@media(width<600){
+    .wrap-a-img{
+        width: 90vw;
+        height: 50vh;
+    }
+}
+.wrap-a-img{
+    width: 100%;
+      height: 50vh;
+}
+.wrap-a-video{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+}
+
+
+  li.slick-active button:before {
+    color: white;
+  }
+
+  .slick-list {
+    overflow: initial;
+  }
+
+  .slick-prev {
+    left: -75px;
+  }
+
+  .slick-next {
+    right: -75px;
+  }
+  .imageSliderchild{
+    margin-top: 20px;
+  } 
+  .imageSliderchild:hover{
+    opacity: 1;
+      transition: opacity 0.2s ease 0s;
+  }

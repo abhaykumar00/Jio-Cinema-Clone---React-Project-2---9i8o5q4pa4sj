@@ -1,49 +1,49 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+import "../style/tranding.css";
 const Trending = () => {
   return (
-    <Container>
+    <div className="tranding">
       <h4>Latest & Trending</h4>
-      <Content>
-        <Wrap>
+      <div className="content">
+        <div className="wrap">
           <Link to="/">
             <img src="/images/jawaan.jpg" alt="" />
           </Link>
-        </Wrap>
-        <Wrap>
+        </div>
+        <div className="wrap">
           <Link to="/">
             <img src="/images/avengers.jpg" alt="" />
           </Link>
-        </Wrap>
-        <Wrap>
+        </div>
+        <div className="wrap">
           <Link to="/">
             <img src="/images/avengers.jpg" alt="" />
           </Link>
-        </Wrap>
-        <Wrap>
+        </div>
+        <div className="wrap">
           <Link to="/">
             <img src="/images/avengers.jpg" alt="" />
           </Link>
-        </Wrap>
-        <Wrap>
+        </div>
+        <div className="wrap">
           <Link to="/">
             <img src="/images/avengers.jpg" alt="" />
           </Link>
-        </Wrap>
-        <Wrap>
+        </div>
+        <div className="wrap">
           <Link to="/">
             <img src="/images/avengers.jpg" alt="" />
           </Link>
-        </Wrap>
-        <Wrap>
+        </div>
+        <div className="wrap">
           <Link to="/">
             <img src="/images/avengers.jpg" alt="" />
           </Link>
-        </Wrap>
-      </Content>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 

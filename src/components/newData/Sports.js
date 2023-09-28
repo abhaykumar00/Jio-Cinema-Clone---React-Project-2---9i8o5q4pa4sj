@@ -35,18 +35,12 @@ function Sports(data) {
 
   return (
     <>
-      <div
-        className="container"
-        style={{ height: "300px", alignItems: "flex-start" }}
-      >
+      <div className="container1">
         <div
-          className="thumbnail-container1"
+          className="thumbnail-containerDiv"
           onClick={() => setSlider(false)}
           style={{
             transform: `translateX(-${currentIndex * slideWidth}px)`,
-            display: "flex",
-            flexDirection: "row",
-            transition: "transform 0.5s ease",
           }}
         >
           {data &&
@@ -59,7 +53,6 @@ function Sports(data) {
                       src={item.thumbnail}
                       alt={item.title}
                       className="thumbnail"
-                      style={{ width: "200px" }}
                       onClick={() => {
                         setVideoUrl(item.video_url);
                         setNewFile(item);

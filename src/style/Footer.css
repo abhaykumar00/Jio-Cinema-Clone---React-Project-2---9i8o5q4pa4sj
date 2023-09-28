@@ -6,22 +6,19 @@
   flex-direction: row;
   flex-wrap: wrap;
   color: white;
-  width: 90vw;
+  width: 95vw;
   justify-content: space-between;
   margin-left: 10px;
  
   bottom: 0;
 }
 
-.footer p{
+
+.footer-a{
   color: white;
   text-decoration: none !important;
 }
-.footer a{
-  color: white;
-  text-decoration: none !important;
-}
-.connects a{
-  margin-left: 20px;
+.connects-a{
+  margin-left: 5px;
   padding: 10px;
 }

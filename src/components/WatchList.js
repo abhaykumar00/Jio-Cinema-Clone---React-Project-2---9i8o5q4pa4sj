@@ -87,10 +87,10 @@ function Watchlist() {
   return (
     <div>
       <div className="watch" onClick={() => setSlider(false)}>
-        <h2>My Watchlist</h2>
-        <div className="watch1">
+        <h2 className="watch-h2">My Watchlist</h2>
+        <div className="watch-First-Div">
           {watchlist.map((show) => (
-            <div key={show._id} className="watch2">
+            <div key={show._id} className="watch-child-div">
               {show.title}
               <Link to={`/ShowDetails/${show._id}`}>
                 <img
@@ -105,7 +105,10 @@ function Watchlist() {
               </Link>
 
               <div className="center">
-                <button onClick={() => removeShowFromWatchlist(show._id)}>
+                <button
+                  className="centerButton"
+                  onClick={() => removeShowFromWatchlist(show._id)}
+                >
                   Remove
                 </button>
               </div>

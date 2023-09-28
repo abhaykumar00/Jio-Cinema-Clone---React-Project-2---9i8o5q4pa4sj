@@ -1,0 +1,16 @@
+.tranding{
+    padding-top: 40px;
+}
+.content{
+    display: grid;
+    grid-gap: 25px;
+    gap: 15px;
+    padding-top: 15px;
+    grid-template-columns: repeat(7,minmax(0,1fr));
+
+}
+@media(max-width:768px){
+    .content{
+        grid-template-columns: repeat(3,minmax(0,1fr));
+    }
+}

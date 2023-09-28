@@ -6,12 +6,12 @@
   
   }
   
-  h2 {
+  .video-h2 {
     font-size: 24px;
     margin-bottom: 10px;
   }
   
-  video {
+  .video-video {
     width: 100%;
     max-width: 800px;
     display: block;
@@ -26,13 +26,13 @@
     bottom: 0;
     background-color: white;
   }
-  .playerWatch span{
+  .playerWatch-span{
     font-size: 50px;
    
     align-self: center;
     background-color: white;
   }
-  .playerWatch span:hover{
+  .playerWatch-span:hover{
     background-color: aliceblue;
     cursor: pointer;
     padding-top: 0;

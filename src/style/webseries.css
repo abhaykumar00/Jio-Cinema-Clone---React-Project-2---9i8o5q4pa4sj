@@ -15,12 +15,12 @@
     margin-top: 100px;
     color: white;
 }
-.webseries h2{
+.webseries-h2{
     text-align: center;
     text-decoration: none;
     
 }
-.card1{
+.cardDiv{
     height: 300px;
     width: 200px;
     position: relative;
@@ -28,16 +28,16 @@
     align-items: center;
     
 }
-.card1 img{
+.cardDiv-img{
     filter: blur(1px);
     height: 300px;
     width: 200px;
     border-radius: 20px;
 }
-.card img:hover{
+.cardDiv-img:hover{
     filter: blur(5px);
 }
-.card1 h3{
+.card-title{
     position: absolute;
     bottom: 0;
     left: 0;

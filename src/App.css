@@ -13,17 +13,17 @@
 body{
   background-color: black;
 }
-.header1{
+.headerleft{
   display: flex;
   flex-direction: row;
   flex-shrink: 2;
  
 }
-.header1 img{
+.headerleft img{
   margin-right: 10px;
   margin-left:10px ;
 }
-.header2 input {
+.headerRight-input {
  border-radius: 25px ;
   height: 20px;
   width: 200px;
@@ -34,12 +34,20 @@ body{
 /* Add this CSS to your existing styles or create a new CSS file */
 
 
-.header2{
+.headerRight{
   display: flex;
   align-items: center;
   margin-right: 50px;
   gap: 10px;
   
+}
+.logojio-Link{
+  text-decoration: none;
+  color: white;
+  padding: 10px 10px;
+}
+.parentHeaderNewGroup{
+  position: relative;
 }
 h4{
   padding: 5px 10px 5px 10px;
@@ -56,19 +64,29 @@ border-radius: 25px;
   width: 50px;
 }
 .headerNewGroup{
- 
+  
     font-size: "50px";
     padding: 0;
     margin: 0;
   cursor: pointer;
  
 }
-
+.newAddGroupDivh4:hover{
+  cursor: pointer;
+  font-size: 20px;
+}
 .newAddGroupDivh4:hover{
   background-color: rgb(233, 226, 227);
 }
 .newAddGroupDiv{
   background-color: rgb(14, 15, 16);
+  height: 350px;
+  width: 200px;
+  position: absolute;
+  top: 60px;
+  left: 55%;
+  background-color: grey;
+  z-index: 100;
 }
 .lessWidth{
   visibility: hidden;
@@ -83,9 +101,7 @@ border-radius: 25px;
 .newAddGroupDiv{
  
 }
-.headerNewGroup{
-  
-}
+
 .menu{
   height: 20px;
   width: 20px;
@@ -111,13 +127,13 @@ border-radius: 25px;
   .menu{
     visibility: visible;
   }
-  .header1 h4{
+  .headerleft h4{
     visibility: hidden;
   }
   .headerNewGroup{
     display: none;
   }
-  .header1{
+  .headerleft{
     width: 40vw;
   }
 }
@@ -125,8 +141,13 @@ border-radius: 25px;
   position: absolute;
   right: 0;
   width: 300px;
-  height: 90vh;
-  background-color: white;
+  height: 95vh;
+ 
+}
+.lessWidht-Link{
+  text-decoration: none;
+  color: white;
+  padding: 10px 10px;
 }
 .lessWidthSignOut{
   display: none;
@@ -141,7 +162,10 @@ border-radius: 25px;
 .logoofJio{
   display: none;
 }
-.header1{
+.headerleft{
   width: 10vw
 }
-};
+}
+.headerNewGroup{
+  font-size: 50px;
+}

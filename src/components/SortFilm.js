@@ -67,7 +67,7 @@ function SortFilm() {
 
   return (
     <div className="webseries" onClick={() => setSlider(false)}>
-      <h2>Sort Film </h2>
+      <h2 className="webseries-h2">Sort Film </h2>
 
       <div className="card">
         {data &&
@@ -81,9 +81,13 @@ function SortFilm() {
                   localStorage.setItem("newFile", JSON.stringify(item));
                 }}
                 key={item._id}
-                className="card1"
+                className="cardDiv"
               >
-                <img src={item.thumbnail} alt={item.title} />
+                <img
+                  className="cardDiv-img"
+                  src={item.thumbnail}
+                  alt={item.title}
+                />
 
                 <h3 className="card-title">{item.title}</h3>
               </div>

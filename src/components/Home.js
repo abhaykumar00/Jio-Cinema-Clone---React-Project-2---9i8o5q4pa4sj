@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import "../style/Home.css";
+import "./Home.css";
 import { MyContext } from "../App";
 import ImageSlider from "./newData/ImageSlider";
 import Sports from "./newData/Sports";
@@ -8,11 +8,6 @@ import Sports from "./newData/Sports";
 import Footer from "./Footer";
 function Home() {
   const {
-    setVideoUrl,
-    slider,
-    setSlider,
-    setNewFile,
-    newFile,
     setLogin,
     setSeaarchActive,
     setActiveLink,
@@ -92,11 +87,11 @@ function Home() {
       <br />
       {data && data.data && <ImageSlider data={[data.data.slice(0, 4)]} />}
       {/* {data && data.data && <Slider data={data} />} */}
-      <p style={{ color: "white", marginLeft: "20px" }}> Video song</p>
+      <p className="mainHome"> Video song</p>
       {videoSong.length > 0 && <Sports data={videoSong} filter="videoSong" />}
-      <p style={{ color: "white", marginLeft: "20px" }}> TV Shows</p>
+      <p className="mainHome"> TV Shows</p>
       {tvShow.length > 0 && <Sports data={tvShow} filter="tv" />}
-      <p style={{ color: "white", marginLeft: "20px" }}> Movie</p>
+      <p className="mainHome"> Movie</p>
       {movieShow.length > 0 && <Sports data={movieShow} filter="Movie" />}
       {/* <div className="thumbnail-container" onClick={() => setSlider(false)}>
         {data &&

@@ -54,12 +54,12 @@ function Header() {
         lessThanPixel && setLessThanPixel(false);
       }}
     >
-      <div className="header1">
+      <div className="headerleft">
         <img
+          className="menu"
           onClick={() => {
             setLessThanPixel(!lessThanPixel);
           }}
-          className="menu"
           src="https://th.bing.com/th/id/OIP.TxsaadwZtg4rcZHQJvFGpgHaHX?pid=ImgDet&rs=1"
         ></img>
         <img
@@ -74,23 +74,15 @@ function Header() {
               handleLinkClick(data[1]);
             }}
           >
-            <Link
-              to={`${data[0]}`}
-              style={{
-                textDecoration: "none",
-                color: "white",
-                padding: "10px 10px",
-              }}
-            >
+            <Link className="logojio-Link" to={`${data[0]}`}>
               {data[1]}
             </Link>
           </h4>
         ))}
-        <div style={{ position: "relative" }}>
+        <div className="parentHeaderNewGroup">
           <h5
             onClick={() => setMiddleSlider(!middleSlider)}
             className="headerNewGroup"
-            style={{ fontSize: "50px", padding: "0", margin: "0" }}
           >
             +
           </h5>
@@ -98,16 +90,6 @@ function Header() {
             <div
               onClick={() => setMiddleSlider(false)}
               className="newAddGroupDiv"
-              style={{
-                height: "350px",
-                width: "200px",
-                position: "absolute",
-                top: "60px",
-                backgroundColor: "grey",
-                zIndex: "100",
-
-                left: "55%",
-              }}
             >
               <h4
                 onClick={() => {
@@ -118,10 +100,6 @@ function Header() {
                   }
                 }}
                 className="newAddGroupDivh4"
-                style={{
-                  cursor: "pointer",
-                  fontSize: "20px",
-                }}
               >
                 SortFilm
               </h4>
@@ -199,14 +177,7 @@ function Header() {
                 handleLinkClick(data[1]);
               }}
             >
-              <Link
-                to={`${data[0]}`}
-                style={{
-                  textDecoration: "none",
-                  color: "white",
-                  padding: "10px 10px",
-                }}
-              >
+              <Link className="lessWidht-Link" to={`${data[0]}`}>
                 {data[1]}
               </Link>
             </h4>
@@ -226,10 +197,11 @@ function Header() {
           )}
         </div>
       )}
-      <div className="header2">
+      <div className="headerRight">
         <Link to="/search">
           {!searchActive && (
             <input
+              className="headerRight-input"
               id={inputRef}
               ref={inputRef}
               type="text"
@@ -264,15 +236,7 @@ function Header() {
         />
       </div>
       {slider && (
-        <div
-          className="slider"
-          style={{
-            position: "absolute",
-            width: "300px",
-            height: "95vh",
-          }}
-          onClick={() => setSlider(!slider)}
-        >
+        <div className="slider" onClick={() => setSlider(!slider)}>
           <div>
             <img src="https://www.jiocinema.com/images/profile/profile_avatar.svg" />
             {myName && <h3 className="sliderH5">Hi! {myName}</h3>}
