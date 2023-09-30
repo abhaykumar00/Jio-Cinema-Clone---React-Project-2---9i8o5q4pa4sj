@@ -4,19 +4,15 @@ import "../style/Video.css";
 import { ref, set, remove } from "firebase/database";
 import { database } from "./newData/firebase";
 import { fireStoreSetting } from "./newData/fireStoreSetting";
+import { toast } from "react-toastify";
 function VideoPlayer() {
   // Use the useContext hook to access the context
   const myRef = useRef([]);
   const [isValueInArray, setIsValueInArray] = useState(false);
   const [watchlist, setWatchlist] = useState([]);
   const [match, setMatch] = useState(true);
-  const {
-    videoUrl,
-    setNewFile,
-    newFile,
-    fetchedFirestoreData,
-    setfetchedFirestoreData,
-  } = useContext(MyContext);
+  const { videoUrl, setNewFile, newFile, setLessThanPixel } =
+    useContext(MyContext);
 
   const projectID = localStorage.getItem("projectID");
   const token = localStorage.getItem("jwtToken");
@@ -53,14 +49,17 @@ function VideoPlayer() {
 
       if (response.ok) {
         // Remove the show from the watchlist in the UI
+        toast.success("Delete video from watchlist");
         setWatchlist((prevWatchlist) =>
           prevWatchlist.filter((show) => show.id !== showId)
         );
       } else {
         // Handle error response
+        toast.error("Fetching Some Error ");
         console.error("Failed to remove show from watchlist");
       }
     } catch (error) {
+      toast.error("Server Error");
       console.error("Error:", error);
     }
     fetchWatchlist();
@@ -83,13 +82,16 @@ function VideoPlayer() {
 
       if (response.ok) {
         // Show was successfully added to the watchlist
+        toast.success("Successfully added to the watchlist");
 
         console.log(newFile._id, "Show added to watchlist");
       } else {
         // Handle error response
+        toast.error("Fetching some error");
         console.error("Failed to add show to watchlist");
       }
     } catch (error) {
+      toast.error("Server error");
       console.error("Error:", error);
     }
 
@@ -148,7 +150,12 @@ function VideoPlayer() {
   }
 
   return (
-    <div className="video-player-container">
+    <div
+      className="video-player-container"
+      onClick={() => {
+        setLessThanPixel(false);
+      }}
+    >
       <h2 className="video-h2">Video Player</h2>
       <video className="video-video" controls>
         <source src={videoUrl} type="video/mp4" />
@@ -173,6 +180,7 @@ function VideoPlayer() {
       {match && isValueInArray && (
         <h6 className="playerWatch">
           <span
+            className="playerWatch-span"
             onClick={() => {
               removeShowFromWatchlist(newFile._id);
 

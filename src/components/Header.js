@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "../App.css";
 import { MyContext } from "../App";
 import SortFilm from "./SortFilm";
+import { toast } from "react-toastify";
 function Header() {
   // Initialize with the default active link
   const [sortFilm, setSortFilm] = useState(true);
@@ -20,8 +21,10 @@ function Header() {
     setSearchVAlue,
     searchActive,
     setSeaarchActive,
+    lessThanPixel,
+    setLessThanPixel,
   } = useContext(MyContext);
-  const [lessThanPixel, setLessThanPixel] = useState(false);
+
   const handleLinkClick = (linkName) => {
     setActiveLink(linkName);
   };
@@ -52,6 +55,7 @@ function Header() {
       className="header"
       onClick={() => {
         lessThanPixel && setLessThanPixel(false);
+        slider && setSlider(false);
       }}
     >
       <div className="headerleft">
@@ -62,11 +66,13 @@ function Header() {
           }}
           src="https://th.bing.com/th/id/OIP.TxsaadwZtg4rcZHQJvFGpgHaHX?pid=ImgDet&rs=1"
         ></img>
-        <img
-          className="logoofJio"
-          src="https://www.jiocinema.com/images/jc_logo_v2.svg"
-          alt="logo"
-        />
+        <Link to="/">
+          <img
+            className="logoofJio"
+            src="https://www.jiocinema.com/images/jc_logo_v2.svg"
+            alt="logo"
+          />
+        </Link>
         {myLocalData.map((data) => (
           <h4
             className={` ${activeLink === data[1] ? "active" : ""}`}
@@ -97,7 +103,8 @@ function Header() {
                     setMYLocalData([...myLocalData, ["SortFilm", "SortFilm"]]);
                     setSortFilm(false);
                     console.log("this is sort film");
-                  }
+                    toast.success("sort film added successfully");
+                  } else toast.error("This is already added");
                 }}
                 className="newAddGroupDivh4"
               >
@@ -106,66 +113,6 @@ function Header() {
             </div>
           )}
         </div>
-        {/* <h4
-          className={`${activeLink === "subscription" ? "active" : ""}`}
-          onClick={() => handleLinkClick("subscription")}
-        >
-          <Link
-            to="/subscription"
-            style={{
-              textDecoration: "none",
-              color: "white",
-              padding: "10px 10px",
-            }}
-          >
-            Subscription
-          </Link>
-        </h4> */}
-        {/* <h4
-          className={` ${activeLink === "Watchlist" ? "active" : ""}`}
-          onClick={() => handleLinkClick("Watchlist")}
-        >
-          <Link
-            to="/Watchlist"
-            style={{
-              textDecoration: "none",
-              color: "white",
-              padding: "10px 10px",
-            }}
-          >
-            Watchlist
-          </Link>
-        </h4> */}
-        {/* <h4
-          className={` ${activeLink === "TVShow" ? "active" : ""}`}
-          onClick={() => handleLinkClick("TVmovies")}
-        >
-          <Link
-            to="/tv-shows"
-            style={{
-              textDecoration: "none",
-              color: "white",
-              padding: "10px 10px",
-            }}
-          >
-            TV Shows
-          </Link>
-        </h4> */}
-        {/* <h4
-          className={` ${activeLink === "web" ? "active" : ""}`}
-          onClick={() => handleLinkClick("web")}
-        >
-          <Link
-            to="/web-series"
-            style={{
-              textDecoration: "none",
-              color: "white",
-              padding: "10px 10px",
-            }}
-          >
-            Web Series
-          </Link>
-        </h4> */}
       </div>
       {lessThanPixel && (
         <div className="lessWidth">

@@ -17,6 +17,7 @@ function WebSeries() {
     setNewFile,
     newFile,
     setSeaarchActive,
+    setLessThanPixel,
   } = useContext(MyContext);
   setSeaarchActive(false);
   useEffect(() => {
@@ -68,7 +69,13 @@ function WebSeries() {
 
   return (
     <>
-      <div className="webseries" onClick={() => setSlider(false)}>
+      <div
+        className="webseries"
+        onClick={() => {
+          setSlider(false);
+          setLessThanPixel(false);
+        }}
+      >
         <h2 className="webseries-h2">Webseries</h2>
 
         {/* <p>Project ID: {projectId}</p> */}

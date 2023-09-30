@@ -29,7 +29,7 @@ const ImageSlider = ({ data }) => {
   };
 
   return (
-    <div className="imageSlider">
+    <div className="imageSlider" onClick={() => slider && setSlider(false)}>
       <Carousel {...settings}>
         <div className="wrap">
           <Link to={`/ShowDetails/${data[0][0]._id}`}>

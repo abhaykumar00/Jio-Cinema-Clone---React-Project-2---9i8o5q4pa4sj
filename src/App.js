@@ -19,6 +19,8 @@ import PasswordUpdateForm from "./components/PasswordUpdateForm";
 import SortFilm from "./components/SortFilm";
 import ShowDetails from "./components/newData/ShowDetails";
 import Footer from "./components/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import Home from "./Home"; // Import your Home component
 // import Subscription from "./Subscription"; // Import your Subscription component
 // import Movies from "./Movies"; // Import your Movies component
@@ -36,7 +38,7 @@ function App() {
   const [fetchedFirestoreData, setfetchedFirestoreData] = useState([]);
   const [globalData, setGlobalData] = useState([]);
   const inputRef = useRef("null");
-
+  const [lessThanPixel, setLessThanPixel] = useState(false);
   // Define the context value as an object
   const contextValue = {
     globalData,
@@ -58,27 +60,32 @@ function App() {
     setSeaarchActive,
     fetchedFirestoreData,
     setfetchedFirestoreData,
+    lessThanPixel,
+    setLessThanPixel,
   };
 
   return (
-    <MyContext.Provider value={contextValue}>
-      <Header />
+    <>
+      <MyContext.Provider value={contextValue}>
+        <Header />
 
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/Subscription" element={<Subscription />} />
-        <Route path="/Watchlist" element={<Watchlist />} />
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/Subscription" element={<Subscription />} />
+          <Route path="/Watchlist" element={<Watchlist />} />
 
-        <Route path="/web-series" element={<WebSeries />} />
-        <Route path="/play/:id" element={<VideoPlayer />} />
-        <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/SortFilm" element={<SortFilm />} />
-        <Route path="/Search" element={<Search />} />
-        <Route path="/ShowDetails/:id" element={<ShowDetails />} />
-        <Route path="/PasswordUpdateForm" element={<PasswordUpdateForm />} />
-      </Routes>
-    </MyContext.Provider>
+          <Route path="/web-series" element={<WebSeries />} />
+          <Route path="/play/:id" element={<VideoPlayer />} />
+          <Route path="/SignUp" element={<SignUp />} />
+          <Route path="/SortFilm" element={<SortFilm />} />
+          <Route path="/Search" element={<Search />} />
+          <Route path="/ShowDetails/:id" element={<ShowDetails />} />
+          <Route path="/PasswordUpdateForm" element={<PasswordUpdateForm />} />
+        </Routes>
+      </MyContext.Provider>
+      <ToastContainer />
+    </>
   );
 }
 

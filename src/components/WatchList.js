@@ -4,6 +4,7 @@ import { MyContext } from "../App";
 import "../style/watchList.css";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import { toast } from "react-toastify";
 function Watchlist() {
   const {
     setVideoUrl,
@@ -13,6 +14,7 @@ function Watchlist() {
     setSeaarchActive,
     slider,
     setSlider,
+    setLessThanPixel,
   } = useContext(MyContext);
   const [watchlist, setWatchlist] = useState([]);
   setSeaarchActive(false);
@@ -39,9 +41,11 @@ function Watchlist() {
         setWatchlist(data.data.shows);
       } else {
         // Handle error response
+        toast.error("Failed to fetch watchlist");
         console.error("Failed to fetch watchlist");
       }
     } catch (error) {
+      toast.error("Server Error");
       console.error("Error:", error);
     }
   }
@@ -70,15 +74,18 @@ function Watchlist() {
       );
 
       if (response.ok) {
+        toast.success("Show removed successfully");
         // Remove the show from the watchlist in the UI
         setWatchlist((prevWatchlist) =>
           prevWatchlist.filter((show) => show.id !== showId)
         );
       } else {
         // Handle error response
+        toast.error("Failed to remove show from watchlist");
         console.error("Failed to remove show from watchlist");
       }
     } catch (error) {
+      toast.error("Server Error");
       console.error("Error:", error);
     }
     fetchWatchlist();
@@ -86,7 +93,13 @@ function Watchlist() {
 
   return (
     <div>
-      <div className="watch" onClick={() => setSlider(false)}>
+      <div
+        className="watch"
+        onClick={() => {
+          setSlider(false);
+          setLessThanPixel(false);
+        }}
+      >
         <h2 className="watch-h2">My Watchlist</h2>
         <div className="watch-First-Div">
           {watchlist.map((show) => (

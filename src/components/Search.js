@@ -3,15 +3,18 @@ import React, { useState, useEffect, useContext } from "react";
 import { MyContext } from "../App";
 import "../style/watchList.css";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 function Search() {
   const {
     setVideoUrl,
-    videoUrl,
+    setLessThanPixel,
     setNewFile,
     newFile,
     setActiveLink,
     setSeaarchActive,
     searchVAlue,
+    setSlider,
+    slider,
   } = useContext(MyContext);
   setSeaarchActive(true);
   const [watchlist, setWatchlist] = useState([]);
@@ -41,9 +44,15 @@ function Search() {
 
         const filteredList = data.data.filter(
           (item) =>
-            item.keywords.includes(searchVAlue) ||
-            item.description.includes(searchVAlue) ||
-            item.description.indexOf(searchVAlue) !== -1
+            item.keywords.includes(searchVAlue.toLowerCase()) ||
+            item.title.toLowerCase().indexOf(searchVAlue.toLowerCase()) !== -1
+          //   -1 ||
+          // item.description
+          //   .toLowerCase()
+          //   .includes(searchVAlue.toLowerCase()) ||
+          // item.description
+          //   .toLowerCase()
+          //   .indexOf(searchVAlue.toLowerCase()) !== -1
         );
 
         setWatchlist(filteredList);
@@ -57,7 +66,13 @@ function Search() {
   }
 
   return (
-    <div className="watch">
+    <div
+      className="watch"
+      onClick={() => {
+        setSlider(false);
+        setLessThanPixel(false);
+      }}
+    >
       <h2 className="watch-h2">SearchList</h2>
       {searchVAlue && (
         <div className="watch-First-Div">

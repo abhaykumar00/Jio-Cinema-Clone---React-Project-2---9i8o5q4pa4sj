@@ -9,8 +9,16 @@ import { MyContext } from "../../App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Sports(data) {
-  const { setVideoUrl, setNewFile, setSlider, setLogin, setSeaarchActive } =
-    useContext(MyContext);
+  const {
+    setVideoUrl,
+    setNewFile,
+    setSlider,
+    setLogin,
+    setSeaarchActive,
+
+    slider,
+  } = useContext(MyContext);
+  setSeaarchActive(false);
   console.log("hey this is data ", data.data.length, data);
   // You can adjust the number of images shown at once and the slide width here
   const imagesPerSlide = 5;
@@ -35,7 +43,7 @@ function Sports(data) {
 
   return (
     <>
-      <div className="container1">
+      <div className="container1" onClick={() => slider && setSlider(false)}>
         <div
           className="thumbnail-containerDiv"
           onClick={() => setSlider(false)}

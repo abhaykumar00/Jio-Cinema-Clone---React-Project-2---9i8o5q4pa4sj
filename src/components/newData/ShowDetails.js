@@ -11,8 +11,14 @@ import Footer from "../Footer";
 const ShowDetails = () => {
   const newFile = JSON.parse(localStorage.getItem("newFile"));
   let { id } = useParams();
-  const { setNewFile, setActiveLink, setVideoUrl, globalData } =
-    useContext(MyContext);
+  const {
+    setNewFile,
+    setActiveLink,
+    setVideoUrl,
+    globalData,
+    setSlider,
+    slider,
+  } = useContext(MyContext);
   console.log("this is newFile in ShowDEtails", newFile);
   setVideoUrl(newFile.video_url);
   const [slidedetailapi, setslidedetailapi] = useState({});
@@ -41,7 +47,7 @@ const ShowDetails = () => {
   }, []);
 
   return (
-    <div className="DeatilsPage">
+    <div className="DeatilsPage" onClick={() => setSlider(false)}>
       <section className="detailssection">
         <div className="detailsdescription">
           <div className="detailalltext">

@@ -4,10 +4,17 @@ import React, { useContext } from "react";
 import "../style/Subscription.css";
 import { MyContext } from "../App";
 function Subscription() {
-  const { setSeaarchActive, slider, setSlider } = useContext(MyContext);
+  const { setSeaarchActive, slider, setSlider, setLessThanPixel } =
+    useContext(MyContext);
   setSeaarchActive(false);
   return (
-    <div className="subscription-container" onClick={() => setSlider(false)}>
+    <div
+      className="subscription-container"
+      onClick={() => {
+        setSlider(false);
+        setLessThanPixel(false);
+      }}
+    >
       <div className="planHeader">
         <h3 className="planHeaderH3">JioCinema Premium</h3>
         <p>

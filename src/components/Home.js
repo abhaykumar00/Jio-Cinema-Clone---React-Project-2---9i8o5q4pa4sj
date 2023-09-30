@@ -6,6 +6,7 @@ import ImageSlider from "./newData/ImageSlider";
 import Sports from "./newData/Sports";
 
 import Footer from "./Footer";
+import { toast } from "react-toastify";
 function Home() {
   const {
     setLogin,
@@ -14,6 +15,8 @@ function Home() {
     activeLink,
     globalData,
     setGlobalData,
+    setSlider,
+    slider,
   } = useContext(MyContext);
   setSeaarchActive(false);
   setActiveLink("Home");
@@ -85,91 +88,18 @@ function Home() {
     <>
       <br></br>
       <br />
-      {data && data.data && <ImageSlider data={[data.data.slice(0, 4)]} />}
-      {/* {data && data.data && <Slider data={data} />} */}
-      <p className="mainHome"> Video song</p>
-      {videoSong.length > 0 && <Sports data={videoSong} filter="videoSong" />}
-      <p className="mainHome"> TV Shows</p>
-      {tvShow.length > 0 && <Sports data={tvShow} filter="tv" />}
-      <p className="mainHome"> Movie</p>
-      {movieShow.length > 0 && <Sports data={movieShow} filter="Movie" />}
-      {/* <div className="thumbnail-container" onClick={() => setSlider(false)}>
-        {data &&
-          data.data &&
-          data.data.map((item) => (
-            <div key={item._id}>
-              <Link to={`/ShowDetails`}>
-                <div
-                  className="homeDiv"
-                  style={{
-                    marginRight: "10px",
-                    height: "330px",
-                    width: "200px",
-                  }}
-                >
-                  <img
-                    src={item.thumbnail}
-                    alt={item.title}
-                    className="thumbnail"
-                    onClick={() => {
-                      setVideoUrl(item.video_url);
-                      setNewFile(item);
-                      console.log(item);
-                    }}
-                  />
+      <div>
+        {data && data.data && <ImageSlider data={[data.data.slice(0, 4)]} />}
+        {/* {data && data.data && <Slider data={data} />} */}
+        <p className="mainHome"> Video song</p>
+        {videoSong.length > 0 && <Sports data={videoSong} filter="videoSong" />}
+        <p className="mainHome"> TV Shows</p>
+        {tvShow.length > 0 && <Sports data={tvShow} filter="tv" />}
+        <p className="mainHome"> Movie</p>
+        {movieShow.length > 0 && <Sports data={movieShow} filter="Movie" />}
 
-                  <h5
-                    style={{
-                      position: "relative",
-                      bottom: "100px",
-                      left: "0",
-                      width: "50%",
-                      color: "black",
-                      fontSize: "15px",
-                      margin: "0",
-                      color: "white",
-                      textAlign: "center",
-                      textDecoration: "none",
-                      marginLeft: "30px",
-                    }}
-                  >
-                    {item.title}
-                  </h5>
-                </div>
-              </Link>
-            </div>
-          ))}*/}
-      {/* <div className="Button">
-          {page > 1 && (
-            <img
-              className="leftButton"
-              onClick={loadPreviousPage}
-              src="https://th.bing.com/th/id/R.df69f1b18bb49c4da8de607d69a7179a?rik=nCyjv6EXGfHqNQ&riu=http%3a%2f%2fwww.pngmart.com%2ffiles%2f3%2fLeft-Arrow-PNG-HD.png&ehk=53%2fNLSNKaSDiWy12wmuj6WAr%2fZSz8SOOzjQd3fQ%2f6AE%3d&risl=&pid=ImgRaw&r=0"
-            />
-          )}
-          {
-            <img
-              className="rightButton"
-              onClick={loadNextPage}
-              src="https://www.jiocinema.com/images/White_Front_Arrow.svg"
-            />
-          }
-        </div> */}
-      {/*</div> */}
-      {/* <div style={{ position: "relative", bottom: "20px", left: "5px" }}>
-        {page > 1 && (
-          <button
-            style={{ padding: "0 10px 0 10px ", marginRight: "10px" }}
-            onClick={loadPreviousPage}
-          >
-            prev
-          </button>
-        )}
-        <button style={{ padding: "0 10px 0 10px " }} onClick={loadNextPage}>
-          next
-        </button>
-      </div> */}
-      <Footer />
+        <Footer />
+      </div>
     </>
   );
 }

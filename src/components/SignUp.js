@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../style/Login.css";
+import { MyContext } from "../App";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 function SignUp() {
+  const { setActiveLink, setLogin } = useContext(MyContext);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,22 +43,24 @@ function SignUp() {
           body: JSON.stringify(formData),
         }
       );
-
+      const data = await response.json();
       if (response.ok) {
-        const data = await response.json();
-
         //hear I got the token in response
+        localStorage.setItem("myName", data.data.user.name);
         const jwtToken = data.token;
         localStorage.setItem("jwtToken", jwtToken);
         // localStorage.setItem("projectID", projectID);
         // Redirect to Home.js
         window.location.href = "/";
-
+        localStorage.setItem("showID", data.data.user._id);
+        setLogin(true);
         console.log(jwtToken);
       } else {
-        console.error("Login failed");
+        console.log(response);
+        toast.error(data.message);
       }
     } catch (error) {
+      toast.error("Facing Server Problem");
       console.error("Error:", error);
     }
   };

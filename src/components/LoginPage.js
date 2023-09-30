@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import SignUp from "./SignUp";
 import { MyContext } from "../App";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 function LoginPage() {
   const { setActiveLink, setLogin } = useContext(MyContext);
   setActiveLink("he");
@@ -43,10 +44,8 @@ function LoginPage() {
           body: JSON.stringify(formData),
         }
       );
-
+      const data = await response.json();
       if (response.ok) {
-        const data = await response.json();
-
         const jwtToken = data.token;
         localStorage.setItem("myName", data.data.name);
         localStorage.setItem("jwtToken", jwtToken);
@@ -60,11 +59,14 @@ function LoginPage() {
         console.log(jwtToken);
       } else {
         //when login falis
+        toast.error(data.message);
+
         console.log("this is error");
         console.error("Login failed");
         setError("your password is incorrect");
       }
     } catch (error) {
+      toast.error("Server Issue");
       console.error("Error:", error);
       console.log("this is error");
       setError(error);
