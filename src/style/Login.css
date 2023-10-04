@@ -6,6 +6,9 @@
     height: 100vh; /* Adjust this as needed for your layout */
     text-align: center;
     background-color: black;
+    background-repeat: no-repeat;
+    
+    background-image: url("../loginPoster.png");
   }
   
   .form {

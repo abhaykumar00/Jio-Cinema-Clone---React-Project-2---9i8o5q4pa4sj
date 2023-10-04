@@ -6,6 +6,8 @@ import Slider from "react-slick";
 import "./ImageSlider.css";
 import { MyContext } from "../../App";
 import { Link } from "react-router-dom";
+import ShowDetails from "./ShowDetails";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 const ImageSlider = ({ data }) => {
   console.log(data, "this is data in image slider");
   const {
@@ -31,82 +33,87 @@ const ImageSlider = ({ data }) => {
   return (
     <div className="imageSlider" onClick={() => slider && setSlider(false)}>
       <Carousel {...settings}>
-        <div className="wrap">
-          <Link to={`/ShowDetails/${data[0][0]._id}`}>
-            <a className="wrap-a">
-              {data && data[0] && (
-                <img
-                  className="wrap-a-img"
-                  onClick={() => {
-                    setVideoUrl(data[0][0].video_url);
-                    setNewFile(data[0][0]);
-                    localStorage.setItem("newFile", JSON.stringify(data[0][0]));
+        {data[0].map((newFile) => (
+          <div className="wrap">
+            <div className="DeatilsPage" onClick={() => setSlider(false)}>
+              <section className="detailssection">
+                <div className="detailsdescription">
+                  <div className="detailalltext">
+                    <h1>{newFile.title}</h1>
+                    <p>
+                      {newFile?.keywords?.map((keyword, index) => (
+                        <span key={index}>
+                          <FiberManualRecordIcon
+                            style={{
+                              fontSize: "8px",
+                              color: "yellow",
+                              margin: "2px",
+                            }}
+                          />
+                          {keyword}
+                        </span>
+                      ))}
+                      {""}
+                      <FiberManualRecordIcon
+                        style={{
+                          fontSize: "8px",
+                          color: "yellow",
+                          margin: "2px",
+                        }}
+                      />
+                      <span>{newFile.type}</span>
+                    </p>
+                    <p>{newFile.description}</p>
+                    <p>
+                      <span id="spantext">Cast: </span>{" "}
+                      {newFile.cast?.join(", ")}
+                    </p>
+                    <p>
+                      <span id="spantext">Director: </span>
+                      {newFile?.director}
+                    </p>
+                    <div className="detailsbtn">
+                      {" "}
+                      <Link to={`/play/${newFile._id}`}>
+                        <button
+                          className="detailsbtnButton"
+                          onClick={() => setVideoUrl(newFile.video_url)}
+                        >
+                          Play
+                        </button>
+                      </Link>
+                    </div>
+                    <div className="detailsactionbtn">
+                      <div onClick={() => {}}></div>{" "}
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="detailsimage"
+                  style={{
+                    backgroundImage: `linear-gradient(to left, rgba(255, 255, 255, 0),rgba(21, 21, 21, 1)), url(${newFile.thumbnail})`,
                   }}
-                  src={data[0][0].thumbnail}
-                  alt=""
-                />
-              )}
-            </a>
-          </Link>
-        </div>
-
-        <div className="wrap">
-          <Link to={`/ShowDetails/${data[0][1]._id}`}>
-            <a className="wrap-a">
-              {data && data[0] && (
-                <img
-                  className="wrap-a-img"
-                  onClick={() => {
-                    setVideoUrl(data[0][1].video_url);
-                    setNewFile(data[0][1]);
-                    localStorage.setItem("newFile", JSON.stringify(data[0][1]));
-                  }}
-                  src={data[0][1].thumbnail}
-                  alt=""
-                />
-              )}
-            </a>
-          </Link>
-        </div>
-        <div className="wrap">
-          <Link to={`/ShowDetails/${data[0][2]._id}`}>
-            <a className="wrap-a">
-              {data && data[0] && (
-                <img
-                  className="wrap-a-img"
-                  onClick={() => {
-                    setVideoUrl(data[0][2].video_url);
-                    setNewFile(data[0][2]);
-                    localStorage.setItem(
-                      "newFile",
-                      JSON.stringify(data[(0, 2)])
-                    );
-                  }}
-                  src={data[0][2].thumbnail}
-                  alt=""
-                />
-              )}
-            </a>
-          </Link>
-        </div>
-        <div className="wrap">
-          <Link to={`/ShowDetails/${data[0][3]._id}`}>
-            <a className="wrap-a">
-              {data && data[0] && (
-                <img
-                  className="wrap-a-img"
-                  onClick={() => {
-                    setVideoUrl(data[0][3].video_url);
-                    setNewFile(data[0][3]);
-                    localStorage.setItem("newFile", JSON.stringify(data[0][3]));
-                  }}
-                  src={data[0][3].thumbnail}
-                  alt=""
-                />
-              )}
-            </a>
-          </Link>
-        </div>
+                ></div>
+              </section>
+            </div>
+            {/* <Link to={`/ShowDetails/${val._id}`}>
+              <a className="wrap-a">
+                {data && data[0] && (
+                  <img
+                    className="wrap-a-img"
+                    onClick={() => {
+                      setVideoUrl(val.video_url);
+                      setNewFile(val);
+                      localStorage.setItem("newFile", JSON.stringify(val));
+                    }}
+                    src={val.thumbnail}
+                    alt=""
+                  />
+                )}
+              </a>
+            </Link> */}
+          </div>
+        ))}
       </Carousel>
     </div>
   );

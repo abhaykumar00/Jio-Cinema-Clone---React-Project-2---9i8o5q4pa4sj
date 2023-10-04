@@ -163,6 +163,7 @@ function Header() {
         </Link>
         {searchActive && (
           <input
+            className="headerRight-input"
             id={inputRef}
             ref={inputRef}
             type="text"

@@ -67,7 +67,13 @@ function SortFilm() {
   };
 
   return (
-    <div className="webseries" onClick={() => {slider && setSlider(false);setLessThanPixel(false)}}>
+    <div
+      className="webseries"
+      onClick={() => {
+        slider && setSlider(false);
+        setLessThanPixels(false);
+      }}
+    >
       <h2 className="webseries-h2">Sort Film </h2>
 
       <div className="card">
